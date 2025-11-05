@@ -92,10 +92,10 @@ export default {
         },
         "float": {
           "0%, 100%": {
-            transform: "translateY(0)",
+            transform: "translate(-50%, -50%) translateY(0px)",
           },
           "50%": {
-            transform: "translateY(-10px)",
+            transform: "translate(-50%, -50%) translateY(-20px)",
           },
         },
         "glow-pulse": {
