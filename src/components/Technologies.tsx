@@ -85,11 +85,11 @@ const Technologies = () => {
                   key={index}
                   onClick={() => setExpandedTech(isExpanded ? null : tech.name)}
                   className={`glass rounded-2xl px-6 py-4 group cursor-pointer text-left
-                    transition-all duration-500 ease-out
-                    ${isExpanded ? 'scale-105 shadow-glow' : 'hover-glow'}
-                    ${isExpanded ? 'min-w-[280px]' : ''}`}
+                    transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)]
+                    ${isExpanded ? 'shadow-glow' : 'hover-glow'}`}
                   style={{ 
                     animationDelay: `${index * 0.05}s`,
+                    maxWidth: isExpanded ? '400px' : 'auto'
                   }}
                 >
                   <span className={`text-lg font-light transition-colors duration-300
@@ -97,8 +97,8 @@ const Technologies = () => {
                     {tech.name}
                   </span>
                   <div 
-                    className={`overflow-hidden transition-all duration-500 ease-out
-                      ${isExpanded ? 'max-h-40 opacity-100 mt-3' : 'max-h-0 opacity-0'}`}
+                    className={`overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)]
+                      ${isExpanded ? 'max-h-40 opacity-100 mt-3' : 'max-h-0 opacity-0 mt-0'}`}
                   >
                     <p className="text-sm text-muted-foreground font-light leading-relaxed">
                       {tech.description}
