@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { ChevronDown } from "lucide-react";
 
 const technologies = [
   {
@@ -79,30 +78,35 @@ const Technologies = () => {
 
         <div className="max-w-5xl mx-auto">
           <div className="flex flex-wrap justify-center gap-4">
-            {technologies.map((tech, index) => (
-              <button
-                key={index}
-                onClick={() => setExpandedTech(expandedTech === tech.name ? null : tech.name)}
-                className="glass rounded-2xl px-6 py-4 hover-glow group cursor-pointer transition-all text-left"
-                style={{ animationDelay: `${index * 0.05}s` }}
-              >
-                <div className="flex items-center gap-2">
-                  <span className="text-lg font-light text-foreground/90 group-hover:text-primary transition-colors">
+            {technologies.map((tech, index) => {
+              const isExpanded = expandedTech === tech.name;
+              return (
+                <button
+                  key={index}
+                  onClick={() => setExpandedTech(isExpanded ? null : tech.name)}
+                  className={`glass rounded-2xl px-6 py-4 group cursor-pointer text-left
+                    transition-all duration-500 ease-out
+                    ${isExpanded ? 'scale-105 shadow-glow' : 'hover-glow'}
+                    ${isExpanded ? 'min-w-[280px]' : ''}`}
+                  style={{ 
+                    animationDelay: `${index * 0.05}s`,
+                  }}
+                >
+                  <span className={`text-lg font-light transition-colors duration-300
+                    ${isExpanded ? 'text-primary' : 'text-foreground/90 group-hover:text-primary'}`}>
                     {tech.name}
                   </span>
-                  <ChevronDown 
-                    className={`w-4 h-4 text-muted-foreground transition-transform ${
-                      expandedTech === tech.name ? 'rotate-180' : ''
-                    }`}
-                  />
-                </div>
-                {expandedTech === tech.name && (
-                  <p className="mt-3 text-sm text-muted-foreground font-light leading-relaxed">
-                    {tech.description}
-                  </p>
-                )}
-              </button>
-            ))}
+                  <div 
+                    className={`overflow-hidden transition-all duration-500 ease-out
+                      ${isExpanded ? 'max-h-40 opacity-100 mt-3' : 'max-h-0 opacity-0'}`}
+                  >
+                    <p className="text-sm text-muted-foreground font-light leading-relaxed">
+                      {tech.description}
+                    </p>
+                  </div>
+                </button>
+              );
+            })}
           </div>
 
           <p className="text-center text-muted-foreground mt-12 text-lg font-light">
