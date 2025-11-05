@@ -66,6 +66,25 @@ const technologies = [
 const Technologies = () => {
   const [expandedTech, setExpandedTech] = useState<string | null>(null);
 
+  // Posizioni sparse per le bolle (in percentuali)
+  const positions = [
+    { top: '10%', left: '15%' },
+    { top: '5%', left: '45%' },
+    { top: '15%', left: '75%' },
+    { top: '35%', left: '10%' },
+    { top: '30%', left: '55%' },
+    { top: '40%', left: '85%' },
+    { top: '55%', left: '25%' },
+    { top: '60%', left: '65%' },
+    { top: '50%', left: '40%' },
+    { top: '75%', left: '15%' },
+    { top: '80%', left: '50%' },
+    { top: '70%', left: '80%' },
+    { top: '25%', left: '35%' },
+    { top: '45%', left: '70%' },
+    { top: '85%', left: '70%' },
+  ];
+
   return (
     <section className="py-32 relative overflow-hidden">
       {/* Background gradient */}
@@ -76,47 +95,48 @@ const Technologies = () => {
           Tecnologie
         </h2>
 
-        <div className="max-w-6xl mx-auto">
-          <div className="flex flex-wrap justify-center items-center gap-6" style={{ minHeight: '700px' }}>
-            {technologies.map((tech, index) => {
-              const isExpanded = expandedTech === tech.name;
-              
-              return (
-                <button
-                  key={index}
-                  onClick={() => setExpandedTech(isExpanded ? null : tech.name)}
-                  className={`glass group cursor-pointer flex-shrink-0
-                    transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)]
-                    ${isExpanded 
-                      ? 'rounded-3xl shadow-glow z-20 w-96 p-6' 
-                      : 'rounded-full w-36 h-36 hover-glow'}`}
-                  style={{ 
-                    animation: `float ${3 + index * 0.3}s ease-in-out infinite`,
-                    animationDelay: `${index * 0.2}s`,
-                    margin: isExpanded ? '0' : `${Math.random() * 20}px ${Math.random() * 30}px`,
-                  }}
-                >
-                  <div className={`flex items-center justify-center transition-all duration-500
-                    ${isExpanded ? 'flex-col items-start h-auto' : 'h-36'}`}>
-                    <span className={`font-light transition-all duration-300
-                      ${isExpanded ? 'text-2xl text-primary mb-3 text-left w-full' : 'text-base text-foreground/90 group-hover:text-primary text-center'}`}>
-                      {tech.name}
-                    </span>
-                    <div 
-                      className={`overflow-hidden transition-all duration-500
-                        ${isExpanded ? 'max-h-60 opacity-100' : 'max-h-0 opacity-0'}`}
-                    >
-                      <p className="text-sm text-muted-foreground font-light leading-relaxed text-left">
-                        {tech.description}
-                      </p>
-                    </div>
+        <div className="max-w-6xl mx-auto relative" style={{ minHeight: '800px' }}>
+          {technologies.map((tech, index) => {
+            const isExpanded = expandedTech === tech.name;
+            const position = positions[index] || { top: '50%', left: '50%' };
+            
+            return (
+              <button
+                key={index}
+                onClick={() => setExpandedTech(isExpanded ? null : tech.name)}
+                className={`glass absolute group cursor-pointer
+                  transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)]
+                  ${isExpanded 
+                    ? 'rounded-3xl shadow-glow z-20 w-80 h-auto p-6' 
+                    : 'rounded-full w-36 h-36 hover-glow'}`}
+                style={{ 
+                  top: position.top,
+                  left: position.left,
+                  transform: 'translate(-50%, -50%)',
+                  animation: `float ${3 + index * 0.3}s ease-in-out infinite`,
+                  animationDelay: `${index * 0.2}s`,
+                }}
+              >
+                <div className={`flex items-center justify-center transition-all duration-500
+                  ${isExpanded ? 'flex-col items-start h-auto' : 'h-full'}`}>
+                  <span className={`font-light transition-all duration-300
+                    ${isExpanded ? 'text-xl text-primary mb-3 text-left w-full' : 'text-base text-foreground/90 group-hover:text-primary text-center'}`}>
+                    {tech.name}
+                  </span>
+                  <div 
+                    className={`overflow-hidden transition-all duration-500
+                      ${isExpanded ? 'max-h-60 opacity-100' : 'max-h-0 opacity-0'}`}
+                  >
+                    <p className="text-sm text-muted-foreground font-light leading-relaxed text-left">
+                      {tech.description}
+                    </p>
                   </div>
-                </button>
-              );
-            })}
-          </div>
+                </div>
+              </button>
+            );
+          })}
 
-          <p className="text-center text-muted-foreground mt-12 text-lg font-light">
+          <p className="text-center text-muted-foreground mt-12 text-lg font-light absolute bottom-0 left-0 right-0">
             E molte altre tecnologie all'avanguardia per creare soluzioni su misura
           </p>
         </div>

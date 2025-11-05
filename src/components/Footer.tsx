@@ -9,6 +9,9 @@ const Footer = () => {
           <p className="text-sm text-muted-foreground/60 font-light">
             Made with passion in Italy 🇮🇹
           </p>
+          <p className="text-xs text-muted-foreground/50 font-light">
+            Questo sito non raccoglie cookie
+          </p>
         </div>
       </div>
     </footer>
