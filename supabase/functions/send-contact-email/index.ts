@@ -26,7 +26,7 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Send email to info@pynkstudio.it
     const emailResponse = await resend.emails.send({
-      from: "Pynk Studio <onboarding@resend.dev>",
+      from: "Pynk Studio <info@pynkstudio.it>",
       to: ["info@pynkstudio.it"],
       replyTo: email,
       subject: `Nuovo messaggio da ${name}`,
