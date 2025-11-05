@@ -1,4 +1,4 @@
-import { Code2, Gamepad2, Map, Palette } from "lucide-react";
+import { Code2, Gamepad2, Map, Palette, Brain, Cog, Sparkles, PenTool } from "lucide-react";
 
 const services = [
   {
@@ -6,6 +6,18 @@ const services = [
     title: "Sviluppo Software",
     description: "Applicativi desktop, web app, automazioni e tool integrati per l'ecosistema Apple. Da macOS a iOS, creiamo soluzioni native che sfruttano al massimo le potenzialità della piattaforma.",
     tech: ["Swift", "SwiftUI", "Node.js", "React"]
+  },
+  {
+    icon: Brain,
+    title: "AI & Machine Learning",
+    description: "Fine tuning di modelli, deploying di intelligenze artificiali dedicate e integrazione di soluzioni AI su misura per il tuo business.",
+    tech: ["OpenAI", "TensorFlow", "PyTorch", "Lovable AI"]
+  },
+  {
+    icon: Cog,
+    title: "Automazioni & Processi",
+    description: "Automazioni informatiche e ottimizzazione dei processi produttivi ed organizzativi in azienda. Riduci i tempi e aumenta l'efficienza.",
+    tech: ["Zapier", "Make", "Python", "Node.js"]
   },
   {
     icon: Gamepad2,
@@ -17,13 +29,25 @@ const services = [
     icon: Map,
     title: "GIS & Data Design",
     description: "Progetti di mappatura interattiva e gestione di dati spaziali. Visualizzazioni complesse rese semplici e intuitive.",
-    tech: ["QGIS", "Leaflet", "MapBox", "PostGIS"]
+    tech: ["QGIS", "ArcGIS", "Leaflet", "MapBox"]
   },
   {
     icon: Palette,
     title: "UX & Design Systems",
     description: "Creazione di interfacce intuitive e coerenti seguendo le Human Interface Guidelines di Apple. Design systems completi e scalabili.",
     tech: ["Figma", "Sketch", "SwiftUI", "UIKit"]
+  },
+  {
+    icon: Sparkles,
+    title: "Brand Identity & Merchandising",
+    description: "Realizzazione di brand identity complete e materiale di merchandising che rappresenta al meglio la tua azienda.",
+    tech: ["Adobe Suite", "Figma", "Blender", "Print Design"]
+  },
+  {
+    icon: PenTool,
+    title: "Copywriting & Content",
+    description: "Creazione di loghi, copywriting professionale e contenuti che comunicano efficacemente il valore del tuo brand.",
+    tech: ["Content Strategy", "SEO", "Brand Voice", "Visual Identity"]
   }
 ];
 
