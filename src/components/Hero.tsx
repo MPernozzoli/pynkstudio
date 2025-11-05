@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import pynkLogo from "@/assets/pynk-logo.png";
+import pynkLogo from "@/assets/pynk-logo-transparent.png";
 
 const Hero = () => {
   const scrollToContact = () => {
