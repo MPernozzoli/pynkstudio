@@ -11,7 +11,7 @@ const services = [
     icon: Brain,
     title: "AI & Machine Learning",
     description: "Fine tuning di modelli, deploying di intelligenze artificiali dedicate e integrazione di soluzioni AI su misura per il tuo business.",
-    tech: ["OpenAI", "TensorFlow", "PyTorch", "Lovable AI"]
+    tech: ["HuggingFace", "Fine-tuning", "RAG", "LLM Training"]
   },
   {
     icon: Cog,
