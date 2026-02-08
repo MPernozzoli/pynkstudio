@@ -8,7 +8,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background">
+    <section className="relative min-h-screen flex items-center justify-center overflow-visible bg-background">
       {/* Elegant gradient background */}
       <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent pointer-events-none" />
       
@@ -16,29 +16,28 @@ const Hero = () => {
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-float" />
       <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/10 rounded-full blur-3xl animate-float" style={{ animationDelay: "1s" }} />
 
+      {/* Fenicottero fluttuante nell'angolo superiore sinistro */}
+      <div className="absolute top-0 left-0 z-20 pointer-events-none">
+        <img 
+          src={pynkLogo} 
+          alt="PynkStudio Logo" 
+          className="w-48 h-48 md:w-64 md:h-64 lg:w-80 lg:h-80 object-contain drop-shadow-2xl animate-float -translate-x-1/4 -translate-y-1/4"
+          style={{ animationDelay: "0.5s" }}
+        />
+      </div>
+
       <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-5xl mx-auto text-center space-y-12 animate-fade-in">
-          {/* Logo con fenicottero */}
-          <div className="flex flex-col items-center justify-center mb-12">
-            <div className="relative mb-6">
-              <img 
-                src={pynkLogo} 
-                alt="PynkStudio Logo" 
-                className="w-48 h-48 md:w-64 md:h-64 object-contain drop-shadow-2xl animate-float"
-                style={{ animationDelay: "0.5s" }}
-              />
-            </div>
-            {/* Logo text */}
-            <div className="flex flex-col items-center space-y-2">
-              <h1 className="text-6xl md:text-8xl font-light tracking-tight">
-                <span className="bg-gradient-to-r from-primary via-primary to-secondary bg-clip-text text-transparent">
-                  PYNK
-                </span>
-              </h1>
-              <p className="text-xl md:text-2xl text-muted-foreground font-light tracking-widest uppercase">
-                STUDIO
-              </p>
-            </div>
+        <div className="max-w-5xl mx-auto text-center space-y-12 animate-fade-in pt-32 md:pt-40">
+          {/* Logo text */}
+          <div className="flex flex-col items-center space-y-2">
+            <h1 className="text-6xl md:text-8xl font-light tracking-tight">
+              <span className="bg-gradient-to-r from-primary via-primary to-secondary bg-clip-text text-transparent">
+                PYNK
+              </span>
+            </h1>
+            <p className="text-xl md:text-2xl text-muted-foreground font-light tracking-widest uppercase">
+              STUDIO
+            </p>
           </div>
 
           <h2 className="text-4xl md:text-6xl font-light tracking-wider text-foreground/90">
