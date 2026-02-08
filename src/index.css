@@ -8,58 +8,67 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 280 20% 12%;
-    --foreground: 300 60% 85%;
+    /* Pynk Studio Palette */
+    /* Studio Black: #0F0F12 */
+    --background: 240 8% 6%;
+    /* Studio White: #FAFAFA */
+    --foreground: 0 0% 98%;
 
-    --card: 280 18% 16%;
-    --card-foreground: 300 60% 85%;
+    /* Pynk Plum: #2B1824 */
+    --card: 330 28% 13%;
+    --card-foreground: 0 0% 98%;
 
-    --popover: 280 20% 14%;
-    --popover-foreground: 300 60% 85%;
+    --popover: 330 28% 15%;
+    --popover-foreground: 0 0% 98%;
 
-    --primary: 300 60% 75%;
-    --primary-foreground: 280 20% 12%;
+    /* Pynk Flamingo: #E94B97 */
+    --primary: 330 80% 60%;
+    --primary-foreground: 0 0% 98%;
 
-    --secondary: 280 50% 70%;
-    --secondary-foreground: 280 20% 12%;
+    /* Pynk Light: #F6A1C5 */
+    --secondary: 330 80% 80%;
+    --secondary-foreground: 240 8% 6%;
 
-    --muted: 280 15% 25%;
-    --muted-foreground: 280 30% 55%;
+    /* Pynk Plum variants */
+    --muted: 330 20% 20%;
+    --muted-foreground: 330 10% 65%;
 
-    --accent: 270 45% 65%;
-    --accent-foreground: 280 20% 12%;
+    /* Pynk Flamingo accent */
+    --accent: 330 80% 65%;
+    --accent-foreground: 0 0% 98%;
 
     --destructive: 0 70% 60%;
-    --destructive-foreground: 300 60% 85%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 280 15% 25%;
-    --input: 280 15% 20%;
-    --ring: 300 60% 75%;
+    --border: 330 20% 25%;
+    --input: 330 25% 15%;
+    --ring: 330 80% 60%;
 
     --radius: 1rem;
 
-    --gradient-primary: linear-gradient(135deg, hsl(300 60% 75%), hsl(280 50% 70%));
-    --gradient-accent: linear-gradient(180deg, hsl(270 45% 65%), hsl(300 60% 75%));
-    --gradient-glow: radial-gradient(circle at 50% 0%, hsl(300 60% 75% / 0.15), transparent 50%);
+    /* Gradients con Pynk Flamingo e Pynk Light */
+    --gradient-primary: linear-gradient(135deg, hsl(330 80% 60%), hsl(330 80% 80%));
+    --gradient-accent: linear-gradient(180deg, hsl(330 80% 80%), hsl(330 80% 60%));
+    --gradient-glow: radial-gradient(circle at 50% 0%, hsl(330 80% 60% / 0.15), transparent 50%);
 
-    --shadow-glow: 0 0 60px hsl(300 60% 75% / 0.2);
-    --shadow-card: 0 8px 32px hsl(280 20% 8% / 0.4);
+    --shadow-glow: 0 0 60px hsl(330 80% 60% / 0.2);
+    --shadow-card: 0 8px 32px hsl(240 8% 3% / 0.4);
 
     --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
-    --sidebar-background: 280 20% 12%;
-    --sidebar-foreground: 300 60% 85%;
-    --sidebar-primary: 300 60% 75%;
-    --sidebar-primary-foreground: 280 20% 12%;
-    --sidebar-accent: 280 18% 16%;
-    --sidebar-accent-foreground: 300 60% 85%;
-    --sidebar-border: 280 15% 25%;
-    --sidebar-ring: 300 60% 75%;
+    --sidebar-background: 240 8% 6%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 330 80% 60%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 330 28% 13%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 330 20% 25%;
+    --sidebar-ring: 330 80% 60%;
   }
 
   .dark {
-    --background: 280 20% 12%;
-    --foreground: 300 60% 85%;
+    --background: 240 8% 6%;
+    --foreground: 0 0% 98%;
   }
 }
 
@@ -78,7 +87,7 @@ All colors MUST be HSL.
   }
 
   .glow-text {
-    text-shadow: 0 0 30px hsl(var(--primary) / 0.5);
+    text-shadow: 0 0 30px hsl(var(--primary) / 0.4);
   }
 
   .hover-glow {

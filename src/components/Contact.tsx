@@ -62,12 +62,12 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-32 relative">
+    <section id="contact" className="py-32 relative bg-gradient-to-b from-background to-card/20">
       <div className="container mx-auto px-6">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-12">
             <Mail className="w-16 h-16 mx-auto mb-6 text-primary animate-float" />
-            <h2 className="text-4xl md:text-6xl font-light mb-6 glow-text">
+            <h2 className="text-4xl md:text-6xl font-light mb-6 text-foreground">
               Contatti
             </h2>
             <p className="text-xl text-muted-foreground font-light">
@@ -75,7 +75,7 @@ const Contact = () => {
             </p>
           </div>
 
-          <form onSubmit={handleSubmit} className="glass rounded-3xl p-8 md:p-12 space-y-6 hover-glow">
+          <form onSubmit={handleSubmit} className="glass rounded-3xl p-8 md:p-12 space-y-6 hover-glow border-primary/20">
             <div className="space-y-2">
               <label htmlFor="name" className="text-sm font-light text-foreground/80">
                 Nome
@@ -119,7 +119,7 @@ const Contact = () => {
             <Button
               type="submit"
               size="lg"
-              className="w-full bg-primary hover:bg-primary/90 text-primary-foreground rounded-2xl py-6 text-lg font-light group"
+              className="w-full bg-primary hover:bg-primary/90 text-primary-foreground rounded-2xl py-6 text-lg font-light group hover:shadow-glow hover:scale-[1.02] transition-all"
             >
               <Send className="mr-2 group-hover:translate-x-1 transition-transform" />
               Invia Messaggio

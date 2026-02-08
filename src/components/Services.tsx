@@ -53,9 +53,9 @@ const services = [
 
 const Services = () => {
   return (
-    <section className="py-32 relative">
+    <section className="py-32 relative bg-background">
       <div className="container mx-auto px-6">
-        <h2 className="text-4xl md:text-6xl font-light mb-16 text-center glow-text">
+        <h2 className="text-4xl md:text-6xl font-light mb-16 text-center text-foreground">
           Cosa Facciamo
         </h2>
 
@@ -63,10 +63,10 @@ const Services = () => {
           {services.map((service, index) => (
             <div
               key={index}
-              className="glass rounded-3xl p-8 space-y-6 hover-glow group"
+              className="glass rounded-3xl p-8 space-y-6 hover-glow group border-primary/10"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center group-hover:scale-110 transition-transform">
+              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg shadow-primary/20">
                 <service.icon className="w-8 h-8 text-primary-foreground" />
               </div>
 
@@ -82,7 +82,7 @@ const Services = () => {
                 {service.tech.map((tech, i) => (
                   <span
                     key={i}
-                    className="px-3 py-1 rounded-full bg-muted/50 text-sm text-muted-foreground border border-border/30"
+                    className="px-3 py-1 rounded-full bg-muted/50 text-sm text-muted-foreground border border-border/30 hover:border-primary/30 transition-colors"
                   >
                     {tech}
                   </span>
