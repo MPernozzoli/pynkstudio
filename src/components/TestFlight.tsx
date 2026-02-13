@@ -12,8 +12,8 @@ const games = [
   {
     name: "Tocca a Te",
     icon: toccaATe,
-    link: null,
-    available: false,
+    link: "https://testflight.apple.com/join/Q5uuDAGe",
+    available: true,
   },
 ];
 
