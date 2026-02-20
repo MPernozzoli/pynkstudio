@@ -1,46 +1,57 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Mail, Send } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 
+const reasons = [
+  "Migliorare la mia azienda",
+  "Sviluppare un'idea o un business",
+  "Creare un gioco o un'app",
+  "Aggiungere un servizio a un sistema esistente",
+  "Sito web o portfolio personale",
+  "Consulenza o formazione",
+  "Altro",
+];
+
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    message: ""
+    phone: "",
+    reason: "",
+    message: "",
   });
   const { toast } = useToast();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    // Form validation
-    if (!formData.name || !formData.email || !formData.message) {
+
+    if (!formData.name || !formData.email || !formData.reason || !formData.message) {
       toast({
         title: "Errore",
-        description: "Per favore compila tutti i campi",
-        variant: "destructive"
+        description: "Per favore compila tutti i campi obbligatori",
+        variant: "destructive",
       });
       return;
     }
 
-    // Simple email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(formData.email)) {
       toast({
         title: "Errore",
         description: "Inserisci un indirizzo email valido",
-        variant: "destructive"
+        variant: "destructive",
       });
       return;
     }
 
     try {
-      const { error } = await supabase.functions.invoke('send-contact-email', {
-        body: formData
+      const { error } = await supabase.functions.invoke("send-contact-email", {
+        body: formData,
       });
 
       if (error) throw error;
@@ -49,14 +60,14 @@ const Contact = () => {
         title: "Messaggio inviato!",
         description: "Ti risponderemo al più presto.",
       });
-      
-      setFormData({ name: "", email: "", message: "" });
+
+      setFormData({ name: "", email: "", phone: "", reason: "", message: "" });
     } catch (error) {
       console.error("Error sending email:", error);
       toast({
         title: "Errore",
         description: "Si è verificato un errore. Riprova più tardi.",
-        variant: "destructive"
+        variant: "destructive",
       });
     }
   };
@@ -76,22 +87,38 @@ const Contact = () => {
           </div>
 
           <form onSubmit={handleSubmit} className="glass rounded-3xl p-8 md:p-12 space-y-6 hover-glow border-primary/20">
-            <div className="space-y-2">
-              <label htmlFor="name" className="text-sm font-light text-foreground/80">
-                Nome
-              </label>
-              <Input
-                id="name"
-                value={formData.name}
-                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                className="bg-input border-border/50 focus:border-primary transition-colors"
-                placeholder="Il tuo nome"
-              />
+            <div className="grid sm:grid-cols-2 gap-6">
+              <div className="space-y-2">
+                <label htmlFor="name" className="text-sm font-light text-foreground/80">
+                  Nome *
+                </label>
+                <Input
+                  id="name"
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  className="bg-input border-border/50 focus:border-primary transition-colors"
+                  placeholder="Il tuo nome"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <label htmlFor="phone" className="text-sm font-light text-foreground/80">
+                  Telefono <span className="text-muted-foreground">(opzionale)</span>
+                </label>
+                <Input
+                  id="phone"
+                  type="tel"
+                  value={formData.phone}
+                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                  className="bg-input border-border/50 focus:border-primary transition-colors"
+                  placeholder="+39 ..."
+                />
+              </div>
             </div>
 
             <div className="space-y-2">
               <label htmlFor="email" className="text-sm font-light text-foreground/80">
-                Email
+                Email *
               </label>
               <Input
                 id="email"
@@ -104,8 +131,26 @@ const Contact = () => {
             </div>
 
             <div className="space-y-2">
+              <label htmlFor="reason" className="text-sm font-light text-foreground/80">
+                Motivo del contatto *
+              </label>
+              <Select value={formData.reason} onValueChange={(value) => setFormData({ ...formData, reason: value })}>
+                <SelectTrigger className="bg-input border-border/50 focus:border-primary transition-colors">
+                  <SelectValue placeholder="Seleziona un motivo..." />
+                </SelectTrigger>
+                <SelectContent className="bg-popover border-border z-50">
+                  {reasons.map((reason) => (
+                    <SelectItem key={reason} value={reason}>
+                      {reason}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+
+            <div className="space-y-2">
               <label htmlFor="message" className="text-sm font-light text-foreground/80">
-                Messaggio
+                Messaggio *
               </label>
               <Textarea
                 id="message"

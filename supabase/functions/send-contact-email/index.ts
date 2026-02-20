@@ -11,6 +11,8 @@ const corsHeaders = {
 interface ContactRequest {
   name: string;
   email: string;
+  phone?: string;
+  reason: string;
   message: string;
 }
 
@@ -20,20 +22,23 @@ const handler = async (req: Request): Promise<Response> => {
   }
 
   try {
-    const { name, email, message }: ContactRequest = await req.json();
+    const { name, email, phone, reason, message }: ContactRequest = await req.json();
     
-    console.log("Sending contact email from:", email, "name:", name);
+    console.log("Sending contact email from:", email, "name:", name, "reason:", reason);
 
-    // Send email to info@pynkstudio.it
+    const phoneRow = phone ? `<p><strong>Telefono:</strong> ${phone}</p>` : "";
+
     const emailResponse = await resend.emails.send({
       from: "Pynk Studio <info@pynkstudio.it>",
       to: ["info@pynkstudio.it"],
       replyTo: email,
-      subject: `Nuovo messaggio da ${name}`,
+      subject: `Nuovo messaggio da ${name} — ${reason}`,
       html: `
         <h2>Nuovo messaggio dal form di contatto</h2>
         <p><strong>Nome:</strong> ${name}</p>
         <p><strong>Email:</strong> ${email}</p>
+        ${phoneRow}
+        <p><strong>Motivo:</strong> ${reason}</p>
         <p><strong>Messaggio:</strong></p>
         <p>${message.replace(/\n/g, '<br>')}</p>
       `,
