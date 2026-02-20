@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Building2, Lightbulb, User, ArrowRight, Code2, Brain, Cog, Gamepad2, Map, Palette, Sparkles, PenTool } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
@@ -52,8 +52,9 @@ const Index = () => {
   const heroScale = useTransform(scrollYProgress, [0, 0.8], [1, 0.95]);
   const heroY = useTransform(scrollYProgress, [0, 0.8], [0, -60]);
 
+  const navigate = useNavigate();
   const scrollToContact = () => {
-    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+    navigate("/per-le-aziende#contact");
   };
 
   return (
