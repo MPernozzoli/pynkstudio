@@ -8,6 +8,7 @@ import PerLeAziende from "./pages/PerLeAziende";
 import PerLeIdee from "./pages/PerLeIdee";
 import PerLePersone from "./pages/PerLePersone";
 import NotFound from "./pages/NotFound";
+import ScrollToTop from "./components/ScrollToTop";
 
 const queryClient = new QueryClient();
 
@@ -17,6 +18,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/per-le-aziende" element={<PerLeAziende />} />
