@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import pynkLogo from "@/assets/pynk-logo-transparent.png";
@@ -14,12 +14,15 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const isMobile = useIsMobile();
   const location = useLocation();
+  const navigate = useNavigate();
 
-  const scrollToContact = () => {
+  const handleContact = () => {
     setMenuOpen(false);
     const el = document.getElementById("contact");
     if (el) {
       el.scrollIntoView({ behavior: "smooth" });
+    } else {
+      navigate("/per-le-aziende#contact");
     }
   };
 
@@ -46,7 +49,7 @@ const Navbar = () => {
               </Link>
             ))}
             <button
-              onClick={scrollToContact}
+              onClick={handleContact}
               className="text-sm font-light text-primary-foreground bg-primary hover:bg-primary/90 px-5 py-2 rounded-full transition-all hover:shadow-glow"
             >
               Contattaci
@@ -78,7 +81,7 @@ const Navbar = () => {
             </Link>
           ))}
           <button
-            onClick={scrollToContact}
+            onClick={handleContact}
             className="block w-full text-center text-sm font-light text-primary-foreground bg-primary hover:bg-primary/90 px-5 py-3 rounded-full transition-all mt-2"
           >
             Contattaci
