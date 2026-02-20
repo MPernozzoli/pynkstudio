@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import pynkLogo from "@/assets/pynk-logo-transparent.png";
+import MagneticText from "@/components/MagneticText";
 
 const navLinks = [
   { label: "Per le aziende", to: "/per-le-aziende" },
@@ -31,7 +32,7 @@ const Navbar = () => {
       <div className="container mx-auto px-6 h-16 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2" onClick={() => setMenuOpen(false)}>
           <img src={pynkLogo} alt="Pynk Studio" className="h-8 w-auto" />
-          <span className="text-lg font-light text-foreground tracking-wide">PYNK STUDIO</span>
+          <MagneticText text="PYNK STUDIO" className="text-lg font-light text-foreground tracking-wide" />
         </Link>
 
         {/* Desktop */}

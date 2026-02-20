@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Building2, Lightbulb, User, ArrowRight } from "lucide-react";
+import { Building2, Lightbulb, User, ArrowRight, Code2, Brain, Cog, Gamepad2, Map, Palette, Sparkles, PenTool } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -23,6 +23,17 @@ const areas = [
     description: "Soluzioni su misura per te. Siti personali, consulenza, formazione.",
     to: "/per-le-persone",
   },
+];
+
+const allServices = [
+  { icon: Code2, title: "Software su misura", description: "App per gestire clienti, ordini, prenotazioni o qualsiasi processo interno." },
+  { icon: Brain, title: "Intelligenza artificiale", description: "Modelli AI per rispondere ai clienti, classificare documenti, estrarre dati." },
+  { icon: Cog, title: "Automazione processi", description: "Eliminiamo il lavoro manuale ripetitivo: email, notifiche, documenti." },
+  { icon: Gamepad2, title: "Videogiochi e video", description: "Sviluppo di videogiochi, esperienze interattive e contenuti multimediali." },
+  { icon: Map, title: "Mappe e dati geografici", description: "Sistemi di mappatura interattiva per visualizzare dati su territorio." },
+  { icon: Palette, title: "Interfacce e design", description: "Schermate e interfacce che le persone capiscono subito." },
+  { icon: Sparkles, title: "Identità visiva", description: "Logo, colori, biglietti da visita, brochure, gadget professionali." },
+  { icon: PenTool, title: "Testi e contenuti", description: "Testi per siti, presentazioni e materiali. Chiari, diretti, efficaci." },
 ];
 
 const Index = () => {
@@ -71,6 +82,32 @@ const Index = () => {
                   Scopri di più <ArrowRight className="w-4 h-4" />
                 </span>
               </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Tutti i servizi */}
+      <section className="py-32 relative bg-background">
+        <div className="container mx-auto px-6">
+          <h2 className="text-4xl md:text-6xl font-light mb-6 text-center text-foreground">
+            Cosa sappiamo fare
+          </h2>
+          <p className="text-xl text-muted-foreground font-light text-center mb-16 max-w-2xl mx-auto">
+            Competenze interne, nessun lavoro dato in outsourcing.
+          </p>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+            {allServices.map((service, index) => (
+              <div
+                key={index}
+                className="glass rounded-2xl p-6 space-y-4 hover-glow border-primary/10 group"
+              >
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg shadow-primary/20">
+                  <service.icon className="w-6 h-6 text-primary-foreground" />
+                </div>
+                <h3 className="text-lg font-light text-primary">{service.title}</h3>
+                <p className="text-sm text-foreground/70 leading-relaxed font-light">{service.description}</p>
+              </div>
             ))}
           </div>
         </div>
