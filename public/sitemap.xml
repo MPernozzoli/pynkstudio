@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://pynkstudio.lovable.app/</loc>
+    <loc>https://pynkstudio.it/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://pynkstudio.lovable.app/per-le-aziende</loc>
+    <loc>https://pynkstudio.it/per-le-aziende</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://pynkstudio.lovable.app/per-le-idee</loc>
+    <loc>https://pynkstudio.it/per-le-idee</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://pynkstudio.lovable.app/per-le-persone</loc>
+    <loc>https://pynkstudio.it/per-le-persone</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
