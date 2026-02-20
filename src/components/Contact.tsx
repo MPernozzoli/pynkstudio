@@ -68,10 +68,10 @@ const Contact = () => {
           <div className="text-center mb-12">
             <Mail className="w-16 h-16 mx-auto mb-6 text-primary animate-float" />
             <h2 className="text-4xl md:text-6xl font-light mb-6 text-foreground">
-              Contatti
+              Parliamone 15 minuti. Poi decidi tu.
             </h2>
             <p className="text-xl text-muted-foreground font-light">
-              Hai un progetto in mente? Raccontacelo.
+              Raccontaci com'è la situazione oggi. Ti diciamo se e come possiamo aiutarti.
             </p>
           </div>
 
