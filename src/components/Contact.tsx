@@ -86,7 +86,7 @@ const Contact = () => {
             </p>
           </div>
 
-          <form onSubmit={handleSubmit} className="glass rounded-3xl p-8 md:p-12 space-y-6 hover-glow border-primary/20">
+            <form onSubmit={handleSubmit} autoComplete="on" className="glass rounded-3xl p-8 md:p-12 space-y-6 hover-glow border-primary/20">
             <div className="grid sm:grid-cols-2 gap-6">
               <div className="space-y-2">
                 <label htmlFor="name" className="text-sm font-light text-foreground/80">
@@ -94,6 +94,8 @@ const Contact = () => {
                 </label>
                 <Input
                   id="name"
+                  name="name"
+                  autoComplete="name"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   className="bg-input border-border/50 focus:border-primary transition-colors"
@@ -107,7 +109,9 @@ const Contact = () => {
                 </label>
                 <Input
                   id="phone"
+                  name="phone"
                   type="tel"
+                  autoComplete="tel"
                   value={formData.phone}
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                   className="bg-input border-border/50 focus:border-primary transition-colors"
@@ -122,7 +126,9 @@ const Contact = () => {
               </label>
               <Input
                 id="email"
+                name="email"
                 type="email"
+                autoComplete="email"
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 className="bg-input border-border/50 focus:border-primary transition-colors"
