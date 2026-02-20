@@ -3,50 +3,50 @@ import { Code2, Gamepad2, Map, Palette, Brain, Cog, Sparkles, PenTool } from "lu
 const services = [
   {
     icon: Code2,
-    title: "Sviluppo Software",
-    description: "Applicativi desktop, web app, automazioni e tool integrati per l'ecosistema Apple. Da macOS a iOS, creiamo soluzioni native che sfruttano al massimo le potenzialità della piattaforma.",
+    title: "Software su misura",
+    description: "App per gestire clienti, ordini, prenotazioni o qualsiasi processo interno. Funzionano su computer, tablet e telefono.",
     tech: ["Swift", "SwiftUI", "Node.js", "React"]
   },
   {
     icon: Brain,
-    title: "AI & Machine Learning",
-    description: "Fine tuning di modelli, deploying di intelligenze artificiali dedicate e integrazione di soluzioni AI su misura per il tuo business.",
+    title: "Intelligenza artificiale applicata",
+    description: "Addestriamo modelli di intelligenza artificiale per rispondere alle domande dei tuoi clienti, classificare documenti o estrarre dati da email e PDF.",
     tech: ["HuggingFace", "Fine-tuning", "RAG", "LLM Training"]
   },
   {
     icon: Cog,
-    title: "Automazioni & Processi",
-    description: "Automazioni informatiche e ottimizzazione dei processi produttivi ed organizzativi in azienda. Riduci i tempi e aumenta l'efficienza.",
+    title: "Automazione dei processi",
+    description: "Eliminiamo il lavoro manuale ripetitivo: smistamento email, compilazione documenti, invio notifiche, aggiornamento fogli di calcolo.",
     tech: ["Zapier", "Make", "Python", "Node.js"]
   },
   {
     icon: Gamepad2,
-    title: "Game & Video Production",
-    description: "Sviluppo di videogiochi, esperienze immersive e contenuti multimediali con le tecnologie più avanzate. Dal concept alla pubblicazione.",
+    title: "Videogiochi e contenuti video",
+    description: "Sviluppo di videogiochi, esperienze interattive e produzione di contenuti multimediali. Dal concept alla pubblicazione.",
     tech: ["Unreal Engine", "Blender", "Unity"]
   },
   {
     icon: Map,
-    title: "GIS & Data Design",
-    description: "Progetti di mappatura interattiva e gestione di dati spaziali. Visualizzazioni complesse rese semplici e intuitive.",
+    title: "Mappe e dati geografici",
+    description: "Sistemi di mappatura interattiva per visualizzare dati su territorio, percorsi, punti vendita o qualsiasi informazione legata a una posizione.",
     tech: ["QGIS", "ArcGIS", "Leaflet", "MapBox"]
   },
   {
     icon: Palette,
-    title: "UX & Design Systems",
-    description: "Creazione di interfacce intuitive e coerenti seguendo le Human Interface Guidelines di Apple. Design systems completi e scalabili.",
+    title: "Interfacce e design",
+    description: "Progettiamo schermate e interfacce che le persone capiscono subito, senza bisogno di spiegazioni o manuali.",
     tech: ["Figma", "Sketch", "SwiftUI", "UIKit"]
   },
   {
     icon: Sparkles,
-    title: "Brand Identity & Merchandising",
-    description: "Realizzazione di brand identity complete e materiale di merchandising che rappresenta al meglio la tua azienda.",
+    title: "Identità visiva e materiali",
+    description: "Logo, colori, biglietti da visita, brochure, gadget: tutto ciò che serve per presentarsi in modo professionale e riconoscibile.",
     tech: ["Adobe Suite", "Figma", "Blender", "Print Design"]
   },
   {
     icon: PenTool,
-    title: "Copywriting & Content",
-    description: "Creazione di loghi, copywriting professionale e contenuti che comunicano efficacemente il valore del tuo brand.",
+    title: "Testi e contenuti",
+    description: "Scriviamo i testi per il tuo sito, le tue presentazioni e i tuoi materiali. Chiari, diretti e pensati per chi li legge.",
     tech: ["Content Strategy", "SEO", "Brand Voice", "Visual Identity"]
   }
 ];
@@ -55,9 +55,12 @@ const Services = () => {
   return (
     <section className="py-32 relative bg-background">
       <div className="container mx-auto px-6">
-        <h2 className="text-4xl md:text-6xl font-light mb-16 text-center text-foreground">
-          Cosa Facciamo
+        <h2 className="text-4xl md:text-6xl font-light mb-6 text-center text-foreground">
+          I nostri strumenti per mettere ordine
         </h2>
+        <p className="text-xl text-muted-foreground font-light text-center mb-16 max-w-2xl mx-auto">
+          Ogni azienda è diversa. Ecco gli strumenti che usiamo per risolvere i problemi più comuni.
+        </p>
 
         <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
           {services.map((service, index) => (
