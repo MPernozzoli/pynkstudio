@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { Linkedin, Instagram } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -16,13 +17,34 @@ const Footer = () => {
               Per le persone
             </Link>
           </div>
+
+          <div className="flex items-center gap-4">
+            <a
+              href="https://www.linkedin.com/company/pynkstudio"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+              className="text-muted-foreground hover:text-primary transition-colors"
+            >
+              <Linkedin className="w-5 h-5" />
+            </a>
+            <a
+              href="https://www.instagram.com/pynkstudios"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+              className="text-muted-foreground hover:text-primary transition-colors"
+            >
+              <Instagram className="w-5 h-5" />
+            </a>
+          </div>
         </div>
         <div className="text-center space-y-4">
           <p className="text-muted-foreground font-light">
             © {new Date().getFullYear()} <span className="text-primary">PYNK STUDIO</span>. Tutti i diritti riservati.
           </p>
           <p className="text-sm text-muted-foreground/60 font-light">
-            Made with passion in Italy 🇮🇹
+            P.IVA 13577530960 · Made with passion in Italy 🇮🇹
           </p>
           <p className="text-xs text-muted-foreground/50 font-light">
             Questo sito non raccoglie cookie
