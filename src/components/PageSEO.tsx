@@ -7,7 +7,7 @@ interface PageSEOProps {
 }
 
 const PageSEO = ({ title, description, path }: PageSEOProps) => {
-  const url = `https://pynkstudio.lovable.app${path}`;
+  const url = `https://pynkstudio.it${path}`;
 
   return (
     <Helmet>
