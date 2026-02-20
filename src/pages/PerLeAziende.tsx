@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import About from "@/components/About";
 import Solution from "@/components/Solution";
@@ -47,6 +49,16 @@ const services = [
 ];
 
 const PerLeAziende = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash === "#contact") {
+      setTimeout(() => {
+        document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+      }, 100);
+    }
+  }, [location]);
+
   const scrollToContact = () => {
     document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
   };
