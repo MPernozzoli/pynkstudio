@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import Navbar from "@/components/Navbar";
+import PageSEO from "@/components/PageSEO";
 import About from "@/components/About";
 import Solution from "@/components/Solution";
 import HowWeWork from "@/components/HowWeWork";
@@ -75,6 +76,11 @@ const PerLeAziende = () => {
 
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
+      <PageSEO
+        title="Per le Aziende — PYNK STUDIO"
+        description="Mettiamo ordine nel lavoro quotidiano della tua azienda. Software su misura, automazione, AI e design per eliminare il caos e aumentare il controllo."
+        path="/per-le-aziende"
+      />
       <Navbar />
 
       {/* Hero – cinematic */}
