@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import Navbar from "@/components/Navbar";
+import PageSEO from "@/components/PageSEO";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -44,6 +45,11 @@ const PerLePersone = () => {
 
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
+      <PageSEO
+        title="Per le Persone — PYNK STUDIO"
+        description="Soluzioni digitali pensate per te. Siti web personali, consulenza individuale e formazione su misura per freelancer e professionisti."
+        path="/per-le-persone"
+      />
       <Navbar />
 
       {/* Hero – cinematic */}

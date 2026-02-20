@@ -3,6 +3,7 @@ import { Building2, Lightbulb, User, ArrowRight, Code2, Brain, Cog, Gamepad2, Ma
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import PageSEO from "@/components/PageSEO";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 
@@ -59,6 +60,11 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
+      <PageSEO
+        title="PYNK STUDIO — Software, Design e Automazione"
+        description="Trasformiamo problemi in soluzioni. Software, automazione e design per aziende, idee e persone. Senza gergo tecnico, con risultati concreti."
+        path="/"
+      />
       <Navbar />
 
       {/* Hero – cinematic */}

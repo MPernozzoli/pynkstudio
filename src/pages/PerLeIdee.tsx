@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import Navbar from "@/components/Navbar";
+import PageSEO from "@/components/PageSEO";
 import TestFlight from "@/components/TestFlight";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
@@ -78,6 +79,11 @@ const PerLeIdee = () => {
 
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
+      <PageSEO
+        title="Per le Idee — PYNK STUDIO"
+        description="Hai un'idea? Ti aiutiamo a farla diventare reale. Dalla validazione al lancio, sviluppo software, videogiochi, design e comunicazione."
+        path="/per-le-idee"
+      />
       <Navbar />
 
       {/* Hero – cinematic */}
