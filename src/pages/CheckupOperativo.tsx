@@ -3,7 +3,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageSEO from "@/components/PageSEO";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, CheckCircle2, XCircle, Phone, ClipboardList, Users, Search, FileText, HeadphonesIcon, Settings, Wrench } from "lucide-react";
+import { ArrowRight, CheckCircle2, XCircle, Phone, ClipboardList, Users, Search, FileText, HeadphonesIcon, Settings, Wrench, BadgeEuro } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { motion } from "framer-motion";
 
@@ -55,7 +55,7 @@ const CheckupOperativo = () => {
         <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-4xl mx-auto text-center space-y-8">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/5">
-              <Search className="w-4 h-4 text-primary" />
+              <BadgeEuro className="w-4 h-4 text-primary" />
               <span className="text-sm text-primary font-light">Prezzo fisso </span>
             </motion.div>
 
