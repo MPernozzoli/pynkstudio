@@ -4,6 +4,7 @@ import { Menu, X } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import pynkLogo from "@/assets/pynk-logo-transparent.png";
 import MagneticText from "@/components/MagneticText";
+import ThemeToggle from "@/components/ThemeToggle";
 
 const navLinks = [
   { label: "Check-up Operativo", to: "/checkup-operativo" },
@@ -37,6 +38,7 @@ const Navbar = () => {
                 {link.label}
               </Link>
             ))}
+            <ThemeToggle />
             <Link
               to="/contattaci"
               className="text-sm font-light text-primary-foreground bg-primary hover:bg-primary/90 px-5 py-2 rounded-full transition-all hover:shadow-glow"
@@ -47,9 +49,12 @@ const Navbar = () => {
         )}
 
         {isMobile && (
-          <button onClick={() => setMenuOpen(!menuOpen)} className="text-foreground p-2">
-            {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+          <div className="flex items-center gap-1">
+            <ThemeToggle />
+            <button onClick={() => setMenuOpen(!menuOpen)} className="text-foreground p-2">
+              {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
         )}
       </div>
 
