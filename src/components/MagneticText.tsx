@@ -70,11 +70,17 @@ const MagneticText = ({ text, className = "" }: MagneticTextProps) => {
         const scale = style?.scale ?? 1;
         const colorIntensity = style?.color ?? 0;
 
-        // Interpolate from foreground (white) to primary pink
-        // primary is hsl(330, 80%, 60%)
-        const r = Math.round(250 + (233 - 250) * colorIntensity);
-        const g = Math.round(250 + (75 - 250) * colorIntensity);
-        const b = Math.round(250 + (151 - 250) * colorIntensity);
+        // Interpolate from current foreground to primary pink
+        // We read the theme from the document class
+        const isDark = document.documentElement.classList.contains("dark");
+        // Dark: foreground ~rgb(250,250,250), Light: foreground ~rgb(35,28,31)
+        const fgR = isDark ? 250 : 35;
+        const fgG = isDark ? 250 : 28;
+        const fgB = isDark ? 250 : 31;
+        // Primary pink: ~rgb(233, 75, 151)
+        const r = Math.round(fgR + (233 - fgR) * colorIntensity);
+        const g = Math.round(fgG + (75 - fgG) * colorIntensity);
+        const b = Math.round(fgB + (151 - fgB) * colorIntensity);
 
         return (
           <span
