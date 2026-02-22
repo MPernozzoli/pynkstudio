@@ -77,8 +77,8 @@ const Contattaci = () => {
         <div className="container mx-auto px-6">
           <div className="max-w-3xl mx-auto">
             <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }} className="text-center mb-12 space-y-4">
-              <h1 className="text-4xl md:text-6xl font-light text-foreground">Parliamo del vostro 
-contesto operativo.
+              <h1 className="text-4xl md:text-6xl font-light text-foreground">
+                <span className="block">Parliamo del vostro</span>
                 <span className="text-primary">contesto operativo.</span>
               </h1>
               <p className="text-lg text-muted-foreground font-light max-w-xl mx-auto">
