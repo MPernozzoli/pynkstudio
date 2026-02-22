@@ -156,8 +156,15 @@ const Index = () => {
             </h2>
 
             <p className="text-lg text-muted-foreground font-light leading-relaxed max-w-2xl mx-auto">
-              Una diagnosi strutturata dei vostri workflow operativi. Identifichiamo le 3-5 criticità prioritarie e vi consegniamo un piano d'azione concreto a 30, 60 e 90 giorni.
+              Una diagnosi strutturata dei vostri workflow operativi. Identifichiamo le 3–5 criticità prioritarie e vi consegniamo un piano d'azione concreto a 30, 60 e 90 giorni.
             </p>
+
+            <div className="flex items-start gap-4 p-6 rounded-2xl border border-primary/20 bg-primary/5 text-left max-w-2xl mx-auto">
+              <CheckCircle2 className="w-6 h-6 text-primary mt-0.5 flex-shrink-0" />
+              <p className="text-foreground/80 font-light">
+                <strong className="font-medium text-foreground">Il check-up è un prodotto completo.</strong> Alla fine avrete un quadro chiaro delle criticità e un piano operativo per intervenire in autonomia, senza bisogno di altri servizi.
+              </p>
+            </div>
 
             <Button size="lg" asChild className="group bg-primary hover:bg-primary/90 text-primary-foreground text-lg px-10 py-7 rounded-full font-light tracking-wide transition-all duration-500 hover:shadow-[0_0_60px_hsl(var(--primary)/0.4)] hover:scale-105">
               <Link to="/checkup-operativo">
@@ -169,19 +176,22 @@ const Index = () => {
         </div>
       </section>
 
-      {/* DOPO IL CHECK-UP */}
+      {/* SERVIZI AGGIUNTIVI */}
       <section className="py-28 relative">
         <div className="container mx-auto px-6">
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }} className="text-center mb-16">
+          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }} className="text-center mb-6">
             <h2 className="text-3xl md:text-5xl lg:text-6xl font-light text-foreground mb-4">
-              Dopo il <span className="text-primary">check-up</span>
+              Servizi di <span className="text-primary">attuazione</span>
             </h2>
-            <p className="text-lg text-muted-foreground font-light max-w-xl mx-auto">
-              Una volta identificate le criticità, vi proponiamo il percorso più adatto.
+            <p className="text-lg text-muted-foreground font-light max-w-2xl mx-auto mb-3">
+              Separati dal check-up, acquistabili a parte. Per chi vuole un affiancamento nell'applicazione del piano o ha bisogno di interventi su problematiche particolarmente complesse.
+            </p>
+            <p className="text-sm text-muted-foreground/70 font-light max-w-xl mx-auto">
+              Non sono obbligatori: il check-up vi dà già tutto per intervenire. Questi servizi servono quando preferite non farlo da soli.
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto mt-12">
             {percorsiAttuazione.map((p, i) => (
               <motion.div
                 key={i}
@@ -191,6 +201,9 @@ const Index = () => {
                 transition={{ duration: 0.5, delay: i * 0.1 }}
                 className="group rounded-3xl border border-border/20 bg-card/10 backdrop-blur-sm p-8 space-y-4 hover:border-primary/30 transition-all duration-500"
               >
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-border/30 bg-card/20 mb-2">
+                  <span className="text-xs text-muted-foreground font-light">Servizio aggiuntivo</span>
+                </div>
                 <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center group-hover:scale-110 transition-transform duration-500 shadow-lg shadow-primary/20">
                   <p.icon className="w-6 h-6 text-primary-foreground" />
                 </div>

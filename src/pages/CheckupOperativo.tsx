@@ -3,7 +3,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageSEO from "@/components/PageSEO";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, CheckCircle2, XCircle, Phone, ClipboardList, Users, Search, FileText } from "lucide-react";
+import { ArrowRight, CheckCircle2, XCircle, Phone, ClipboardList, Users, Search, FileText, HeadphonesIcon, Settings, Wrench } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 
@@ -164,6 +164,74 @@ const CheckupOperativo = () => {
               </div>
             </motion.div>
           </div>
+        </div>
+      </section>
+
+      {/* IL CHECK-UP È COMPLETO */}
+      <section className="py-28 relative bg-gradient-to-b from-background to-card/20">
+        <div className="container mx-auto px-6">
+          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }} className="max-w-3xl mx-auto space-y-8">
+            <h2 className="text-3xl md:text-5xl font-light text-foreground">
+              Un prodotto <span className="text-primary">completo.</span>
+            </h2>
+            <div className="space-y-6 text-foreground/80 font-light text-lg leading-relaxed">
+              <p>
+                Il check-up non è un'esca commerciale. È un servizio fatto e finito: alla fine avrete un quadro chiaro di cosa non funziona, perché, e come intervenire.
+              </p>
+              <p>
+                Il piano a 30/60/90 giorni è pensato per essere applicato dal vostro team, con le vostre risorse. Non vi serve altro per iniziare a migliorare.
+              </p>
+            </div>
+
+            <div className="flex items-start gap-4 p-6 rounded-2xl border border-primary/20 bg-primary/5">
+              <CheckCircle2 className="w-6 h-6 text-primary mt-0.5 flex-shrink-0" />
+              <p className="text-foreground font-light text-lg">
+                <strong className="font-medium">Il check-up è già un ottimo investimento da solo.</strong> Nessun obbligo di acquistare altro.
+              </p>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* SERVIZI AGGIUNTIVI */}
+      <section className="py-28 relative">
+        <div className="container mx-auto px-6">
+          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }} className="max-w-3xl mx-auto space-y-8">
+            <h2 className="text-3xl md:text-5xl font-light text-foreground">
+              Se vi serve una <span className="text-primary">mano.</span>
+            </h2>
+            <p className="text-lg text-muted-foreground font-light leading-relaxed">
+              Per chi preferisce non fare tutto da solo, offriamo servizi di attuazione separati e acquistabili a parte. Sono utili quando le criticità emerse richiedono un intervento prolungato nel tempo o competenze specifiche.
+            </p>
+
+            <div className="space-y-4">
+              <div className="flex items-start gap-4 p-5 rounded-2xl border border-border/20 bg-card/10">
+                <HeadphonesIcon className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                <div>
+                  <h3 className="text-foreground font-medium mb-1">Supporto operativo</h3>
+                  <p className="text-sm text-muted-foreground font-light">Vi affianchiamo nell'applicazione del piano, settimana per settimana, senza stravolgere il lavoro quotidiano.</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-4 p-5 rounded-2xl border border-border/20 bg-card/10">
+                <Settings className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                <div>
+                  <h3 className="text-foreground font-medium mb-1">Ridisegno workflow</h3>
+                  <p className="text-sm text-muted-foreground font-light">Interveniamo su flussi di lavoro particolarmente complessi che richiedono un ripensamento strutturale.</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-4 p-5 rounded-2xl border border-border/20 bg-card/10">
+                <Wrench className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                <div>
+                  <h3 className="text-foreground font-medium mb-1">Implementazione strumenti</h3>
+                  <p className="text-sm text-muted-foreground font-light">Se dal check-up emerge la necessità di strumenti digitali, li scegliamo, li configuriamo e vi formiamo. Solo quando serve davvero.</p>
+                </div>
+              </div>
+            </div>
+
+            <p className="text-sm text-muted-foreground/70 font-light">
+              Questi servizi si attivano solo dopo il check-up e sono quotati separatamente in base alla complessità dell'intervento.
+            </p>
+          </motion.div>
         </div>
       </section>
 
