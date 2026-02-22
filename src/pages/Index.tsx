@@ -4,8 +4,7 @@ import Footer from "@/components/Footer";
 import PageSEO from "@/components/PageSEO";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, AlertTriangle, CheckCircle2, Search, Wrench, Settings, HeadphonesIcon } from "lucide-react";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
 
 const problemiHome = [
   "Pratiche ferme perché nessuno sa chi deve occuparsene.",
@@ -33,11 +32,6 @@ const percorsiAttuazione = [
 ];
 
 const Index = () => {
-  const heroRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
-  const heroScale = useTransform(scrollYProgress, [0, 0.8], [1, 0.95]);
-  const heroY = useTransform(scrollYProgress, [0, 0.8], [0, -60]);
 
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
@@ -49,17 +43,12 @@ const Index = () => {
       <Navbar />
 
       {/* HERO */}
-      <section ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <motion.div
-            className="absolute w-[600px] h-[600px] rounded-full blur-[120px] opacity-15"
-            style={{ background: "hsl(var(--primary))", top: "10%", left: "20%" }}
-            animate={{ x: [0, 40, -20, 0], y: [0, -30, 20, 0] }}
-            transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
-          />
+          <div className="absolute w-[600px] h-[600px] rounded-full opacity-10" style={{ background: "radial-gradient(circle, hsl(var(--primary)) 0%, transparent 70%)", top: "10%", left: "20%" }} />
         </div>
 
-        <motion.div style={{ opacity: heroOpacity, scale: heroScale, y: heroY }} className="container mx-auto px-6 relative z-10">
+        <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-4xl mx-auto text-center space-y-8">
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
@@ -99,7 +88,7 @@ const Index = () => {
               </Button>
             </motion.div>
           </div>
-        </motion.div>
+        </div>
       </section>
 
       {/* IL PROBLEMA */}
