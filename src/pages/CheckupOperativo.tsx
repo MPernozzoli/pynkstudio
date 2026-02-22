@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import PageSEO from "@/components/PageSEO";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle2, XCircle, Phone, ClipboardList, Users, Search, FileText, HeadphonesIcon, Settings, Wrench } from "lucide-react";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 
@@ -61,7 +62,7 @@ const CheckupOperativo = () => {
           <div className="max-w-4xl mx-auto text-center space-y-8">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/5">
               <Search className="w-4 h-4 text-primary" />
-              <span className="text-sm text-primary font-light">Servizio principale</span>
+              <span className="text-sm text-primary font-light">Prezzo fisso · 7 giorni</span>
             </motion.div>
 
             <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }} className="text-4xl md:text-6xl lg:text-7xl font-light tracking-tight text-foreground leading-[1.1]">
@@ -193,7 +194,7 @@ const CheckupOperativo = () => {
         </div>
       </section>
 
-      {/* SERVIZI AGGIUNTIVI */}
+      {/* SERVIZI AGGIUNTIVI - ACCORDION */}
       <section className="py-28 relative">
         <div className="container mx-auto px-6">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }} className="max-w-3xl mx-auto space-y-8">
@@ -201,32 +202,115 @@ const CheckupOperativo = () => {
               Se vi serve una <span className="text-primary">mano.</span>
             </h2>
             <p className="text-lg text-muted-foreground font-light leading-relaxed">
-              Per chi preferisce non fare tutto da solo, offriamo servizi di attuazione separati e acquistabili a parte. Sono utili quando le criticità emerse richiedono un intervento prolungato nel tempo o competenze specifiche.
+              Servizi separati dal check-up, acquistabili a parte. Per chi vuole un affiancamento nell'attuazione o ha criticità particolarmente ostiche.
             </p>
 
-            <div className="space-y-4">
-              <div className="flex items-start gap-4 p-5 rounded-2xl border border-border/20 bg-card/10">
-                <HeadphonesIcon className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                <div>
-                  <h3 className="text-foreground font-medium mb-1">Supporto operativo</h3>
-                  <p className="text-sm text-muted-foreground font-light">Vi affianchiamo nell'applicazione del piano, settimana per settimana, senza stravolgere il lavoro quotidiano.</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-4 p-5 rounded-2xl border border-border/20 bg-card/10">
-                <Settings className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                <div>
-                  <h3 className="text-foreground font-medium mb-1">Ridisegno workflow</h3>
-                  <p className="text-sm text-muted-foreground font-light">Interveniamo su flussi di lavoro particolarmente complessi che richiedono un ripensamento strutturale.</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-4 p-5 rounded-2xl border border-border/20 bg-card/10">
-                <Wrench className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                <div>
-                  <h3 className="text-foreground font-medium mb-1">Implementazione strumenti</h3>
-                  <p className="text-sm text-muted-foreground font-light">Se dal check-up emerge la necessità di strumenti digitali, li scegliamo, li configuriamo e vi formiamo. Solo quando serve davvero.</p>
-                </div>
-              </div>
-            </div>
+            <Accordion type="single" collapsible className="space-y-3">
+              <AccordionItem value="workflow" className="rounded-2xl border border-border/20 bg-card/10 px-6 data-[state=open]:border-primary/30 transition-colors duration-300">
+                <AccordionTrigger className="hover:no-underline py-5">
+                  <div className="flex items-center gap-4">
+                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center flex-shrink-0 shadow-lg shadow-primary/20">
+                      <Settings className="w-5 h-5 text-primary-foreground" />
+                    </div>
+                    <div className="text-left">
+                      <h3 className="text-lg font-light text-foreground">Ridisegno e Standardizzazione Workflow</h3>
+                      <p className="text-sm text-muted-foreground font-light">Architettura operativa</p>
+                    </div>
+                  </div>
+                </AccordionTrigger>
+                <AccordionContent className="pb-6 pt-2">
+                  <div className="space-y-5 pl-14">
+                    <div>
+                      <h4 className="text-sm font-medium text-foreground mb-2">Cosa facciamo</h4>
+                      <ul className="space-y-1.5">
+                        {["Mappatura dettagliata dei flussi critici", "Definizione responsabilità: chi fa cosa, quando", "Creazione procedure operative (SOP)", "Eliminazione passaggi inutili o duplicati", "Definizione punti di controllo"].map((item, i) => (
+                          <li key={i} className="flex items-start gap-2 text-sm text-foreground/80 font-light">
+                            <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div>
+                      <h4 className="text-sm font-medium text-foreground mb-1">Quando serve</h4>
+                      <p className="text-sm text-muted-foreground font-light">Quando il problema è strutturale e non basta qualche aggiustamento.</p>
+                    </div>
+                    <div>
+                      <h4 className="text-sm font-medium text-foreground mb-1">Cosa non è</h4>
+                      <p className="text-sm text-muted-foreground font-light">Non è formazione HR. Non è coaching. Non è controllo del personale.</p>
+                    </div>
+                    <p className="text-sm text-primary font-light italic">È architettura operativa.</p>
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="supporto" className="rounded-2xl border border-border/20 bg-card/10 px-6 data-[state=open]:border-primary/30 transition-colors duration-300">
+                <AccordionTrigger className="hover:no-underline py-5">
+                  <div className="flex items-center gap-4">
+                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center flex-shrink-0 shadow-lg shadow-primary/20">
+                      <HeadphonesIcon className="w-5 h-5 text-primary-foreground" />
+                    </div>
+                    <div className="text-left">
+                      <h3 className="text-lg font-light text-foreground">Implementazione Operativa e Supporto</h3>
+                      <p className="text-sm text-muted-foreground font-light">30–60 giorni di affiancamento</p>
+                    </div>
+                  </div>
+                </AccordionTrigger>
+                <AccordionContent className="pb-6 pt-2">
+                  <div className="space-y-5 pl-14">
+                    <div>
+                      <h4 className="text-sm font-medium text-foreground mb-2">Cosa facciamo</h4>
+                      <ul className="space-y-1.5">
+                        {["Supporto nell'introduzione delle nuove procedure", "Allineamento team sui nuovi flussi", "Setup strumenti esistenti (task manager, email rules, ecc.)", "Monitoraggio prime settimane", "Correzione criticità emergenti"].map((item, i) => (
+                          <li key={i} className="flex items-start gap-2 text-sm text-foreground/80 font-light">
+                            <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div>
+                      <h4 className="text-sm font-medium text-foreground mb-1">Quando serve</h4>
+                      <p className="text-sm text-muted-foreground font-light">Quando non avete tempo o struttura per implementare da soli.</p>
+                    </div>
+                    <p className="text-sm text-primary font-light italic">Questo è il servizio che evita che il report finisca in un cassetto.</p>
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="strumenti" className="rounded-2xl border border-border/20 bg-card/10 px-6 data-[state=open]:border-primary/30 transition-colors duration-300">
+                <AccordionTrigger className="hover:no-underline py-5">
+                  <div className="flex items-center gap-4">
+                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center flex-shrink-0 shadow-lg shadow-primary/20">
+                      <Wrench className="w-5 h-5 text-primary-foreground" />
+                    </div>
+                    <div className="text-left">
+                      <h3 className="text-lg font-light text-foreground">Integrazione e Automazione Strumenti</h3>
+                      <p className="text-sm text-muted-foreground font-light">Solo se necessario</p>
+                    </div>
+                  </div>
+                </AccordionTrigger>
+                <AccordionContent className="pb-6 pt-2">
+                  <div className="space-y-5 pl-14">
+                    <div>
+                      <h4 className="text-sm font-medium text-foreground mb-2">Cosa facciamo</h4>
+                      <ul className="space-y-1.5">
+                        {["Selezione strumenti più adatti al vostro contesto", "Configurazione workflow digitali", "Automazioni email e pratiche", "Eventuale sviluppo su misura", "Integrazione tra sistemi esistenti"].map((item, i) => (
+                          <li key={i} className="flex items-start gap-2 text-sm text-foreground/80 font-light">
+                            <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div>
+                      <h4 className="text-sm font-medium text-foreground mb-1">Cosa non è</h4>
+                      <p className="text-sm text-muted-foreground font-light">Non è un software generalista. È un intervento mirato per sostenere la nuova struttura operativa.</p>
+                    </div>
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
 
             <p className="text-sm text-muted-foreground/70 font-light">
               Questi servizi si attivano solo dopo il check-up e sono quotati separatamente in base alla complessità dell'intervento.
