@@ -5,9 +5,11 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import Index from "./pages/Index";
+import CheckupOperativo from "./pages/CheckupOperativo";
 import PerLeAziende from "./pages/PerLeAziende";
-import PerLeIdee from "./pages/PerLeIdee";
-import PerLePersone from "./pages/PerLePersone";
+import Metodo from "./pages/Metodo";
+import Contattaci from "./pages/Contattaci";
+import AltriProgetti from "./pages/AltriProgetti";
 import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/ScrollToTop";
 
@@ -23,9 +25,11 @@ const App = () => (
           <ScrollToTop />
           <Routes>
             <Route path="/" element={<Index />} />
+            <Route path="/checkup-operativo" element={<CheckupOperativo />} />
             <Route path="/per-le-aziende" element={<PerLeAziende />} />
-            <Route path="/per-le-idee" element={<PerLeIdee />} />
-            <Route path="/per-le-persone" element={<PerLePersone />} />
+            <Route path="/metodo" element={<Metodo />} />
+            <Route path="/contattaci" element={<Contattaci />} />
+            <Route path="/altri-progetti" element={<AltriProgetti />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
