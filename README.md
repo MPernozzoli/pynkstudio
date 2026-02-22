@@ -1,73 +1,122 @@
-# Welcome to your Lovable project
+# PynkStudio – Riorganizzazione Operativa per PMI
 
-## Project info
+## Overview
 
-**URL**: https://lovable.dev/projects/b7d4639a-22ea-47d9-8386-86ad75674d52
+PynkStudio è uno studio specializzato nella riorganizzazione dei workflow operativi per PMI di servizi.
 
-## How can I edit this code?
+Interveniamo quando il lavoro quotidiano diventa ingestibile: pratiche ferme, comunicazioni disperse, responsabilità poco chiare e titolare sempre nel mezzo.
 
-There are several ways of editing your application.
+Non facciamo consulenza legale.
+Non facciamo HR disciplinare.
+Non facciamo coaching motivazionale.
 
-**Use Lovable**
+Progettiamo strutture operative.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/b7d4639a-22ea-47d9-8386-86ad75674d52) and start prompting.
+---
 
-Changes made via Lovable will be committed automatically to this repo.
+# Core Service
 
-**Use your preferred IDE**
+## 🔎 Check-up Operativo (7 giorni)
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+Diagnosi strutturata dei workflow aziendali.
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### Output:
 
-Follow these steps:
+- 3–5 criticità prioritarie
+- Analisi impatto operativo
+- Piano 30/60/90 giorni
+- Indicazioni strumenti (se necessari)
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+Il check-up è il punto di ingresso per ogni intervento strutturato.
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+---
 
-# Step 3: Install the necessary dependencies.
-npm i
+# Servizi Post Check-Up
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+## 1️⃣ Ridisegno Workflow Operativo
 
-**Edit a file directly in GitHub**
+- Mappatura dettagliata flussi critici
+- Definizione responsabilità
+- Standardizzazione procedure (SOP)
+- Eliminazione colli di bottiglia
+- Introduzione punti di controllo
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+Obiettivo: creare un sistema chiaro e replicabile.
 
-**Use GitHub Codespaces**
+---
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## 2️⃣ Supporto alla Transizione Operativa
 
-## What technologies are used for this project?
+- Affiancamento implementazione
+- Allineamento team sui nuovi flussi
+- Setup strumenti esistenti
+- Monitoraggio prime settimane
+- Correzione criticità emergenti
 
-This project is built with:
+Obiettivo: evitare che il piano resti teorico.
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+---
 
-## How can I deploy this project?
+## 3️⃣ Integrazione e Automazione Strumenti
 
-Simply open [Lovable](https://lovable.dev/projects/b7d4639a-22ea-47d9-8386-86ad75674d52) and click on Share -> Publish.
+- Selezione strumenti adeguati
+- Configurazione workflow digitali
+- Automazioni operative
+- Integrazione tra sistemi
+- Eventuale sviluppo su misura
 
-## Can I connect a custom domain to my Lovable project?
+Il software è un mezzo, non il punto di partenza.
 
-Yes, you can!
+---
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+# Target
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+PMI di servizi (5–20 persone) con:
+
+- Alta gestione documentale
+- Elevato volume comunicazioni
+- Dipendenza operativa dal titolare
+- Crescita non accompagnata da struttura
+
+---
+
+# Metodo
+
+1. Analisi contesto operativo
+2. Identificazione criticità prioritarie
+3. Definizione piano 30/60/90
+4. Strutturazione flussi
+5. Implementazione e monitoraggio
+
+---
+
+# Cosa NON Facciamo
+
+- Audit legali
+- Valutazioni disciplinari del personale
+- Consulenza HR
+- Marketing o branding
+- Formazione motivazionale
+
+---
+
+# Principi Operativi
+
+- Prima il sistema, poi gli strumenti.
+- Chiarezza prima di efficienza.
+- Responsabilità definite, non implicite.
+- Nessuna promessa miracolosa.
+- Ogni intervento deve essere implementabile.
+
+---
+
+# Visione
+
+Costruire strutture operative che rendano il lavoro più chiaro, stabile e sostenibile nel tempo.
+
+---
+
+# Contatti
+
+📩 info@pynkstudio.it  
+🌐 https://pynkstudio.it
