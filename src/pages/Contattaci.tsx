@@ -18,7 +18,7 @@ const Contattaci = () => {
     sector: "",
     message: "",
     email: "",
-    phone: "",
+    phone: ""
   });
   const [copied, setCopied] = useState(false);
   const { toast } = useToast();
@@ -50,8 +50,8 @@ const Contattaci = () => {
           email: formData.email,
           phone: formData.phone,
           reason: `Azienda: ${formData.company} | Persone: ${formData.people} | Settore: ${formData.sector}`,
-          message: formData.message,
-        },
+          message: formData.message
+        }
       });
 
       if (error) throw error;
@@ -69,16 +69,17 @@ const Contattaci = () => {
       <PageSEO
         title="Contattaci — PYNK STUDIO"
         description="Parliamo del vostro contesto operativo. Call preliminare di 20 minuti, senza impegno."
-        path="/contattaci"
-      />
+        path="/contattaci" />
+
       <Navbar />
 
       <section className="pt-32 pb-28 relative">
         <div className="container mx-auto px-6">
           <div className="max-w-3xl mx-auto">
             <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }} className="text-center mb-12 space-y-4">
-              <h1 className="text-4xl md:text-6xl font-light text-foreground">
-                Parliamo del vostro <span className="text-primary">contesto operativo.</span>
+              <h1 className="text-4xl md:text-6xl font-light text-foreground">Parliamo del vostro 
+contesto operativo.
+                <span className="text-primary">contesto operativo.</span>
               </h1>
               <p className="text-lg text-muted-foreground font-light max-w-xl mx-auto">
                 Compilate il form o scriveteci direttamente. La call preliminare è di 20 minuti e senza impegno.
@@ -155,8 +156,7 @@ const Contattaci = () => {
       </section>
 
       <Footer />
-    </div>
-  );
+    </div>);
 };
 
 export default Contattaci;
