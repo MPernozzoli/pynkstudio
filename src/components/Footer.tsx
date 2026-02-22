@@ -7,14 +7,20 @@ const Footer = () => {
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row items-center justify-between gap-8 mb-8">
           <div className="flex flex-wrap items-center justify-center gap-6">
+            <Link to="/checkup-operativo" className="text-sm text-muted-foreground hover:text-primary transition-colors font-light">
+              Check-up Operativo
+            </Link>
             <Link to="/per-le-aziende" className="text-sm text-muted-foreground hover:text-primary transition-colors font-light">
               Per le aziende
             </Link>
-            <Link to="/per-le-idee" className="text-sm text-muted-foreground hover:text-primary transition-colors font-light">
-              Per le idee
+            <Link to="/metodo" className="text-sm text-muted-foreground hover:text-primary transition-colors font-light">
+              Metodo
             </Link>
-            <Link to="/per-le-persone" className="text-sm text-muted-foreground hover:text-primary transition-colors font-light">
-              Per le persone
+            <Link to="/contattaci" className="text-sm text-muted-foreground hover:text-primary transition-colors font-light">
+              Contattaci
+            </Link>
+            <Link to="/altri-progetti" className="text-sm text-muted-foreground hover:text-primary transition-colors font-light">
+              Altri progetti
             </Link>
           </div>
 
@@ -44,11 +50,11 @@ const Footer = () => {
             © {new Date().getFullYear()} <span className="text-primary">PYNK STUDIO</span>. Tutti i diritti riservati.
           </p>
           <p className="text-sm text-muted-foreground/60 font-light">
-            P.IVA 13577530960 · Made with passion in Italy 🇮🇹
+            P.IVA 13577530960 · Made with precision in Italy 🇮🇹
           </p>
-          <p className="text-xs text-muted-foreground/50 font-light">
-            Questo sito non raccoglie cookie
-          </p>
+          <div className="flex items-center justify-center gap-4 text-xs text-muted-foreground/50 font-light">
+            <span>Questo sito non raccoglie cookie</span>
+          </div>
         </div>
       </div>
     </footer>
