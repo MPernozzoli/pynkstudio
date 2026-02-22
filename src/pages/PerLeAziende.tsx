@@ -7,36 +7,36 @@ import { ArrowRight, AlertTriangle, CheckCircle2, Search, Settings, Wrench, Shie
 import { motion } from "framer-motion";
 
 const problemi = [
-  "Le richieste dei clienti si perdono tra email, WhatsApp e telefonate.",
-  "Nessuno sa esattamente chi deve fare cosa e entro quando.",
-  "Il titolare è coinvolto in ogni decisione, anche le più piccole.",
-  "I processi funzionano solo perché le persone se li ricordano.",
-  "I dati sono sparsi in fogli Excel, cartelle condivise, chat.",
-  "Quando qualcuno è assente, il lavoro si blocca.",
-];
+"Le richieste dei clienti si perdono tra email, WhatsApp e telefonate.",
+"Nessuno sa esattamente chi deve fare cosa e entro quando.",
+"Il titolare è coinvolto in ogni decisione, anche le più piccole.",
+"I processi funzionano solo perché le persone se li ricordano.",
+"I dati sono sparsi in fogli Excel, cartelle condivise, chat.",
+"Quando qualcuno è assente, il lavoro si blocca."];
+
 
 const metodologia = [
-  {
-    icon: Search,
-    title: "Analisi",
-    desc: "Osserviamo i vostri flussi di lavoro reali. Non quelli dichiarati, quelli che accadono davvero ogni giorno.",
-  },
-  {
-    icon: Settings,
-    title: "Strutturazione",
-    desc: "Definiamo responsabilità, priorità e procedure. Prima la struttura, poi — se serve — gli strumenti.",
-  },
-  {
-    icon: Wrench,
-    title: "Implementazione",
-    desc: "Vi affianchiamo nell'applicazione delle modifiche. Graduale, senza stravolgere il lavoro quotidiano.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Monitoraggio",
-    desc: "Verifichiamo che i cambiamenti tengano nel tempo e correggiamo dove necessario.",
-  },
-];
+{
+  icon: Search,
+  title: "Analisi",
+  desc: "Osserviamo i vostri flussi di lavoro reali. Non quelli dichiarati, quelli che accadono davvero ogni giorno."
+},
+{
+  icon: Settings,
+  title: "Strutturazione",
+  desc: "Definiamo responsabilità, priorità e procedure. Prima la struttura, poi — se serve — gli strumenti."
+},
+{
+  icon: Wrench,
+  title: "Implementazione",
+  desc: "Vi affianchiamo nell'applicazione delle modifiche. Graduale, senza stravolgere il lavoro quotidiano."
+},
+{
+  icon: ShieldCheck,
+  title: "Monitoraggio",
+  desc: "Verifichiamo che i cambiamenti tengano nel tempo e correggiamo dove necessario."
+}];
+
 
 const PerLeAziende = () => {
 
@@ -45,8 +45,8 @@ const PerLeAziende = () => {
       <PageSEO
         title="Riorganizzazione operativa per PMI — PYNK STUDIO"
         description="Aiutiamo PMI di servizi a rimettere ordine nei workflow operativi. Prima il sistema, poi gli strumenti."
-        path="/per-le-aziende"
-      />
+        path="/per-le-aziende" />
+
       <Navbar />
 
       {/* HERO */}
@@ -57,8 +57,9 @@ const PerLeAziende = () => {
 
         <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-4xl mx-auto text-center space-y-8">
-            <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }} className="text-4xl md:text-6xl lg:text-7xl font-light tracking-tight text-foreground leading-[1.1]">
-              Il problema non è il software. È il <span className="text-primary">modo in cui lavorate.</span>
+            <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }} className="text-4xl md:text-6xl lg:text-7xl font-light tracking-tight text-foreground leading-[1.1]">Il problema non è il software. 
+È il modo in cui lavorate.
+              <span className="text-primary">modo in cui lavorate.</span>
             </motion.h1>
 
             <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.5 }} className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto font-light leading-relaxed">
@@ -88,12 +89,11 @@ const PerLeAziende = () => {
               Queste sono le situazioni che troviamo più spesso nelle PMI di servizi. Non sono eccezioni: sono la norma.
             </p>
             <div className="space-y-4">
-              {problemi.map((p, i) => (
-                <motion.div key={i} initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: i * 0.08 }} className="flex items-start gap-4 p-4 rounded-2xl border border-border/20 bg-card/10">
+              {problemi.map((p, i) => <motion.div key={i} initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: i * 0.08 }} className="flex items-start gap-4 p-4 rounded-2xl border border-border/20 bg-card/10">
                   <AlertTriangle className="w-5 h-5 text-destructive mt-0.5 flex-shrink-0" />
                   <p className="text-foreground/80 font-light">{p}</p>
                 </motion.div>
-              ))}
+              )}
             </div>
           </motion.div>
         </div>
@@ -109,15 +109,15 @@ const PerLeAziende = () => {
           </motion.div>
 
           <div className="grid sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
-            {metodologia.map((m, i) => (
-              <motion.div key={i} initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.1 }} className="group rounded-2xl border border-border/20 bg-card/10 backdrop-blur-sm p-7 space-y-4 hover:border-primary/30 transition-all duration-500">
+            {metodologia.map((m, i) =>
+            <motion.div key={i} initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.1 }} className="group rounded-2xl border border-border/20 bg-card/10 backdrop-blur-sm p-7 space-y-4 hover:border-primary/30 transition-all duration-500">
                 <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center group-hover:scale-110 transition-transform duration-500 shadow-lg shadow-primary/20">
                   <m.icon className="w-6 h-6 text-primary-foreground" />
                 </div>
                 <h3 className="text-xl font-light text-foreground group-hover:text-primary transition-colors duration-300">{m.title}</h3>
                 <p className="text-sm text-muted-foreground font-light leading-relaxed">{m.desc}</p>
               </motion.div>
-            ))}
+            )}
           </div>
         </div>
       </section>
@@ -174,8 +174,8 @@ const PerLeAziende = () => {
       </section>
 
       <Footer />
-    </div>
-  );
+    </div>);
+
 };
 
 export default PerLeAziende;
