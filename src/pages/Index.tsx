@@ -209,7 +209,8 @@ const Index = () => {
         <div className="container mx-auto px-6 text-center">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }} className="max-w-2xl mx-auto space-y-8">
             <h2 className="text-3xl md:text-5xl font-light text-foreground">
-              Parliamo del vostro <span className="text-primary">contesto operativo.</span>
+              <span className="block">Parliamo del vostro</span>
+              <span className="text-primary">contesto operativo.</span>
             </h2>
             <p className="text-lg text-muted-foreground font-light">
               20 minuti per capire se ha senso lavorare insieme. Nessun impegno.
