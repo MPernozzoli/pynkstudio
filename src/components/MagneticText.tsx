@@ -9,9 +9,10 @@ const MagneticText = ({ text, className = "" }: MagneticTextProps) => {
   const containerRef = useRef<HTMLSpanElement>(null);
   const [letterStyles, setLetterStyles] = useState<Array<{ scale: number; color: number }>>([]);
   const rafRef = useRef<number | null>(null);
+  const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
 
   const handleMouseMove = useCallback((e: MouseEvent) => {
-    if (!containerRef.current) return;
+    if (!containerRef.current || isMobile) return;
 
     if (rafRef.current) cancelAnimationFrame(rafRef.current);
 
@@ -29,9 +30,9 @@ const MagneticText = ({ text, className = "" }: MagneticTextProps) => {
           (e.clientX - letterCenterX) ** 2 + (e.clientY - letterCenterY) ** 2
         );
 
-        const maxDist = 120;
+        const maxDist = 80;
         const influence = Math.max(0, 1 - dist / maxDist);
-        const scale = 1 + influence * 0.35;
+        const scale = 1 + influence * 0.2;
         const color = influence;
 
         newStyles.push({ scale, color });
@@ -39,7 +40,7 @@ const MagneticText = ({ text, className = "" }: MagneticTextProps) => {
 
       setLetterStyles(newStyles);
     });
-  }, []);
+  }, [isMobile]);
 
   const handleMouseLeave = useCallback(() => {
     if (rafRef.current) cancelAnimationFrame(rafRef.current);
