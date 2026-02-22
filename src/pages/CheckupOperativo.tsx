@@ -5,8 +5,7 @@ import PageSEO from "@/components/PageSEO";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle2, XCircle, Phone, ClipboardList, Users, Search, FileText, HeadphonesIcon, Settings, Wrench } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
 
 const target = [
   "Annaspano nel carico quotidiano senza riuscire a fermarsi per capire cosa non funziona.",
@@ -37,11 +36,6 @@ const nonE = [
 ];
 
 const CheckupOperativo = () => {
-  const heroRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
-  const heroScale = useTransform(scrollYProgress, [0, 0.8], [1, 0.95]);
-  const heroY = useTransform(scrollYProgress, [0, 0.8], [0, -60]);
 
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
@@ -53,12 +47,12 @@ const CheckupOperativo = () => {
       <Navbar />
 
       {/* HERO */}
-      <section ref={heroRef} className="relative min-h-[85vh] flex items-center justify-center overflow-hidden pt-16">
+      <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden pt-16">
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <motion.div className="absolute w-[500px] h-[500px] rounded-full blur-[120px] opacity-15" style={{ background: "hsl(var(--primary))", top: "15%", left: "25%" }} animate={{ x: [0, 30, -20, 0], y: [0, -25, 15, 0] }} transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }} />
+          <div className="absolute w-[500px] h-[500px] rounded-full opacity-10" style={{ background: "radial-gradient(circle, hsl(var(--primary)) 0%, transparent 70%)", top: "15%", left: "25%" }} />
         </div>
 
-        <motion.div style={{ opacity: heroOpacity, scale: heroScale, y: heroY }} className="container mx-auto px-6 relative z-10">
+        <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-4xl mx-auto text-center space-y-8">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/5">
               <Search className="w-4 h-4 text-primary" />
@@ -82,7 +76,7 @@ const CheckupOperativo = () => {
               </Button>
             </motion.div>
           </div>
-        </motion.div>
+        </div>
       </section>
 
       {/* A CHI È RIVOLTO */}

@@ -4,8 +4,7 @@ import Footer from "@/components/Footer";
 import PageSEO from "@/components/PageSEO";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Search, ListOrdered, LayoutGrid, Wrench, BarChart3 } from "lucide-react";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
 
 const framework = [
   {
@@ -41,11 +40,6 @@ const framework = [
 ];
 
 const Metodo = () => {
-  const heroRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
-  const heroScale = useTransform(scrollYProgress, [0, 0.8], [1, 0.95]);
-  const heroY = useTransform(scrollYProgress, [0, 0.8], [0, -60]);
 
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
@@ -57,12 +51,12 @@ const Metodo = () => {
       <Navbar />
 
       {/* HERO */}
-      <section ref={heroRef} className="relative min-h-[70vh] flex items-center justify-center overflow-hidden pt-16">
+      <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden pt-16">
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <motion.div className="absolute w-[500px] h-[500px] rounded-full blur-[120px] opacity-15" style={{ background: "hsl(var(--primary))", top: "15%", right: "20%" }} animate={{ x: [0, -30, 20, 0], y: [0, 25, -15, 0] }} transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }} />
+          <div className="absolute w-[500px] h-[500px] rounded-full opacity-10" style={{ background: "radial-gradient(circle, hsl(var(--primary)) 0%, transparent 70%)", top: "15%", right: "20%" }} />
         </div>
 
-        <motion.div style={{ opacity: heroOpacity, scale: heroScale, y: heroY }} className="container mx-auto px-6 relative z-10">
+        <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-3xl mx-auto text-center space-y-8">
             <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }} className="text-4xl md:text-6xl font-light tracking-tight text-foreground leading-[1.1]">
               Il nostro <span className="text-primary">metodo</span>
@@ -72,7 +66,7 @@ const Metodo = () => {
               Cinque fasi. Nessuna scorciatoia. Ogni fase ha un obiettivo chiaro e un risultato misurabile.
             </motion.p>
           </div>
-        </motion.div>
+        </div>
       </section>
 
       {/* FRAMEWORK */}
