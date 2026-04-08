@@ -12,6 +12,7 @@ import Metodo from "./pages/Metodo";
 import Contattaci from "./pages/Contattaci";
 import AltriProgetti from "./pages/AltriProgetti";
 import NotFound from "./pages/NotFound";
+import Unsubscribe from "./pages/Unsubscribe";
 import ScrollToTop from "./components/ScrollToTop";
 
 const queryClient = new QueryClient();
@@ -32,6 +33,7 @@ const App = () => (
               <Route path="/metodo" element={<Metodo />} />
               <Route path="/contattaci" element={<Contattaci />} />
               <Route path="/altri-progetti" element={<AltriProgetti />} />
+              <Route path="/unsubscribe" element={<Unsubscribe />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>
