@@ -44,17 +44,36 @@ const Contattaci = () => {
     }
 
     try {
-      const { error } = await supabase.functions.invoke("send-contact-email", {
-        body: {
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone,
-          reason: `Azienda: ${formData.company} | Persone: ${formData.people} | Settore: ${formData.sector}`,
-          message: formData.message
-        }
-      });
+      const submissionId = crypto.randomUUID();
+      const reason = `Azienda: ${formData.company} | Persone: ${formData.people} | Settore: ${formData.sector}`;
 
-      if (error) throw error;
+      // Send confirmation to user
+      const { error: confirmError } = await supabase.functions.invoke("send-transactional-email", {
+        body: {
+          templateName: "contact-confirmation",
+          recipientEmail: formData.email,
+          idempotencyKey: `contact-confirm-${submissionId}`,
+          templateData: { name: formData.name, reason },
+        },
+      });
+      if (confirmError) throw confirmError;
+
+      // Send notification to team
+      const { error: notifyError } = await supabase.functions.invoke("send-transactional-email", {
+        body: {
+          templateName: "contact-notification",
+          recipientEmail: "info@pynkstudio.it",
+          idempotencyKey: `contact-notify-${submissionId}`,
+          templateData: {
+            name: formData.name,
+            email: formData.email,
+            phone: formData.phone,
+            reason,
+            message: formData.message,
+          },
+        },
+      });
+      if (notifyError) throw notifyError;
 
       toast({ title: "Messaggio inviato!", description: "Vi ricontattiamo al più presto." });
       setFormData({ name: "", company: "", people: "", sector: "", message: "", email: "", phone: "" });

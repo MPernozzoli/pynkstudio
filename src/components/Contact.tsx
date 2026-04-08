@@ -50,11 +50,35 @@ const Contact = () => {
     }
 
     try {
-      const { error } = await supabase.functions.invoke("send-contact-email", {
-        body: formData,
-      });
+      const submissionId = crypto.randomUUID();
 
-      if (error) throw error;
+      // Send confirmation to user
+      const { error: confirmError } = await supabase.functions.invoke("send-transactional-email", {
+        body: {
+          templateName: "contact-confirmation",
+          recipientEmail: formData.email,
+          idempotencyKey: `contact-confirm-${submissionId}`,
+          templateData: { name: formData.name, reason: formData.reason },
+        },
+      });
+      if (confirmError) throw confirmError;
+
+      // Send notification to team
+      const { error: notifyError } = await supabase.functions.invoke("send-transactional-email", {
+        body: {
+          templateName: "contact-notification",
+          recipientEmail: "info@pynkstudio.it",
+          idempotencyKey: `contact-notify-${submissionId}`,
+          templateData: {
+            name: formData.name,
+            email: formData.email,
+            phone: formData.phone,
+            reason: formData.reason,
+            message: formData.message,
+          },
+        },
+      });
+      if (notifyError) throw notifyError;
 
       toast({
         title: "Messaggio inviato!",
