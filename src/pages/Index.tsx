@@ -3,222 +3,253 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageSEO from "@/components/PageSEO";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, AlertTriangle, CheckCircle2, Search, Wrench, Settings, HeadphonesIcon } from "lucide-react";
-import { motion } from "framer-motion";
+import { ArrowRight, Brain, Globe, Link2, Map, Monitor, Palette, Smartphone } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useNerdMode } from "@/contexts/NerdModeContext";
+import {
+  homeConsulting,
+  homeCrossSkills,
+  homeDevPillars,
+  homeHero,
+  homeSectorsStrip,
+  t,
+} from "@/lib/copy";
+import StackChips from "@/components/StackChips";
 
-const problemiHome = [
-  "Pratiche ferme perché nessuno sa chi deve occuparsene.",
-  "Email importanti perse in mezzo a decine di messaggi.",
-  "Responsabilità poco chiare: tutti fanno tutto, nessuno chiude niente.",
-  "Il titolare è sempre nel mezzo, perché senza di lui si blocca tutto.",
-];
+const pillarIcons = [Globe, Smartphone, Monitor] as const;
+const crossLucide = [Brain, Palette, Map, Link2] as const;
 
-const percorsiAttuazione = [
-  {
-    icon: HeadphonesIcon,
-    title: "Supporto operativo",
-    desc: "Vi affianchiamo nell'applicazione delle priorità emerse dal check-up, senza stravolgere il lavoro quotidiano.",
-  },
-  {
-    icon: Settings,
-    title: "Ridisegno workflow",
-    desc: "Riorganizziamo i flussi di lavoro che creano colli di bottiglia, attribuendo responsabilità chiare.",
-  },
-  {
-    icon: Wrench,
-    title: "Implementazione strumenti",
-    desc: "Se servono strumenti digitali, li scegliamo e li configuriamo noi. Solo quando è necessario, mai prima.",
-  },
-];
+const sectorPills = ["E-commerce", "Servizi professionali", "Industria", "Cultura e turismo", "PA e associazioni"];
 
 const Index = () => {
+  const { nerd } = useNerdMode();
 
   return (
-    <div className="min-h-screen bg-background overflow-x-hidden">
+    <div className="min-h-screen overflow-x-hidden bg-background">
       <PageSEO
-        title="PYNK STUDIO — Riorganizzazione operativa per PMI di servizi"
-        description="Quando il lavoro è fuori controllo, vi aiutiamo a rimettere ordine. Check-up operativo in 7 giorni per PMI di servizi italiane."
+        title="PYNK STUDIO — Software house italiana"
+        description="Sviluppo di siti web, web app, applicazioni mobile e desktop. Consulenza operativa per PMI."
         path="/"
       />
       <Navbar />
 
-      {/* HERO */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
-        <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <div className="absolute w-[600px] h-[600px] rounded-full opacity-10" style={{ background: "radial-gradient(circle, hsl(var(--primary)) 0%, transparent 70%)", top: "10%", left: "20%" }} />
+      <section className="relative flex min-h-screen items-center justify-center overflow-hidden pt-16">
+        <div className="pointer-events-none absolute inset-0 overflow-hidden">
+          <div
+            className="absolute h-[600px] w-[600px] rounded-full opacity-10"
+            style={{
+              background: "radial-gradient(circle, hsl(var(--primary)) 0%, transparent 70%)",
+              top: "10%",
+              left: "20%",
+            }}
+          />
         </div>
-
-        <div className="container mx-auto px-6 relative z-10">
-          <div className="max-w-4xl mx-auto text-center space-y-8">
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-4xl md:text-6xl lg:text-7xl font-light tracking-tight text-foreground leading-[1.1]"
-            >
-              Quando il lavoro è fuori controllo, vi aiutiamo a{" "}
-              <span className="text-primary">rimettere ordine.</span>
-            </motion.h1>
-
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
-              className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto font-light leading-relaxed"
-            >
-              Analizziamo workflow, comunicazioni e responsabilità operative per riportare chiarezza e priorità nel lavoro quotidiano.
-            </motion.p>
-
+        <div className="container relative z-10 mx-auto px-6">
+          <div className="mx-auto max-w-4xl space-y-8 text-center">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={nerd ? "hero-n" : "hero-p"}
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -12 }}
+                transition={{ duration: 0.3 }}
+                className="space-y-6"
+              >
+                <h1 className="text-4xl font-light leading-[1.1] tracking-tight text-foreground md:text-6xl lg:text-7xl">
+                  {t(homeHero.title, nerd)}
+                </h1>
+                <p className="mx-auto max-w-2xl text-lg font-light leading-relaxed text-muted-foreground md:text-xl">
+                  {t(homeHero.subtitle, nerd)}
+                </p>
+              </motion.div>
+            </AnimatePresence>
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.8 }}
-              className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4"
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="flex flex-col items-center justify-center gap-4 pt-4 sm:flex-row"
             >
-              <Button size="lg" asChild className="group bg-primary hover:bg-primary/90 text-primary-foreground text-lg px-10 py-7 rounded-full font-light tracking-wide transition-all duration-500 hover:shadow-[0_0_60px_hsl(var(--primary)/0.4)] hover:scale-105">
-                <Link to="/checkup-operativo">
-                  Scopri il Check-up Operativo
-                  <ArrowRight className="ml-2 group-hover:translate-x-2 transition-transform duration-300" />
+              <Button
+                size="lg"
+                asChild
+                className="group rounded-full bg-primary px-10 py-7 text-lg font-light tracking-wide text-primary-foreground transition-all duration-500 hover:scale-105 hover:bg-primary/90 hover:shadow-[0_0_60px_hsl(var(--primary)/0.4)]"
+              >
+                <Link to="/servizi">
+                  I nostri servizi
+                  <ArrowRight className="ml-2 transition-transform duration-300 group-hover:translate-x-2" />
                 </Link>
               </Button>
-              <Button size="lg" variant="outline" asChild className="text-lg px-10 py-7 rounded-full font-light tracking-wide border-border/50 hover:border-primary/50 transition-all duration-300">
-                <Link to="/contattaci">
-                  Parliamo 20 minuti
-                </Link>
+              <Button
+                size="lg"
+                variant="outline"
+                asChild
+                className="rounded-full border-border/50 px-10 py-7 text-lg font-light tracking-wide transition-all duration-300 hover:border-primary/50"
+              >
+                <Link to="/contattaci">Contattaci</Link>
               </Button>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* IL PROBLEMA */}
-      <section className="py-28 relative">
+      <section className="relative py-28">
         <div className="container mx-auto px-6">
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }} className="max-w-3xl mx-auto">
-            <h2 className="text-3xl md:text-5xl lg:text-6xl font-light text-foreground mb-6">
-              Il caos operativo non è un problema di <span className="text-primary">persone.</span>
-            </h2>
-            <p className="text-lg text-muted-foreground font-light leading-relaxed mb-10">
-              Nella maggior parte delle PMI di servizi che incontriamo, le persone lavorano bene. Il problema è che mancano strutture chiare: chi fa cosa, quando, con quale priorità.
-            </p>
-
-            <div className="space-y-4">
-              {problemiHome.map((p, i) => (
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mb-4 text-center text-3xl font-light text-foreground md:text-5xl"
+          >
+            Cosa <span className="text-primary">facciamo</span>
+          </motion.h2>
+          <p className="mx-auto mb-14 max-w-xl text-center font-light text-muted-foreground">
+            Dal sito alle app: un unico team che segue progetto, qualità e messa online.
+          </p>
+          <div className="mx-auto grid max-w-5xl gap-8 md:grid-cols-3">
+            {homeDevPillars.map((pillar, i) => {
+              const Icon = pillarIcons[i];
+              return (
                 <motion.div
-                  key={i}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
+                  key={pillar.id}
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: i * 0.1 }}
-                  className="flex items-start gap-4 p-4 rounded-2xl border border-border/20 bg-card/10"
+                  transition={{ delay: i * 0.08 }}
+                  className="rounded-3xl border border-border/20 bg-card/10 p-8 backdrop-blur-sm transition-colors hover:border-primary/30"
                 >
-                  <AlertTriangle className="w-5 h-5 text-destructive mt-0.5 flex-shrink-0" />
-                  <p className="text-foreground/80 font-light">{p}</p>
+                  <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-secondary shadow-lg shadow-primary/20">
+                    <Icon className="h-6 w-6 text-primary-foreground" />
+                  </div>
+                  <AnimatePresence mode="wait">
+                    <motion.div key={`${pillar.id}-${nerd}`} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.2 }}>
+                      <h3 className="text-xl font-light text-foreground">{t(pillar.title, nerd)}</h3>
+                      <p className="mt-3 font-light leading-relaxed text-foreground/80">{t(pillar.desc, nerd)}</p>
+                    </motion.div>
+                  </AnimatePresence>
+                  {nerd && <StackChips items={[...pillar.stack]} />}
                 </motion.div>
-              ))}
-            </div>
-
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.5 }}
-              className="text-muted-foreground font-light mt-8"
-            >
-              Non servono più strumenti. Serve capire dove si blocca il lavoro e rimettere ordine.
-            </motion.p>
-          </motion.div>
+              );
+            })}
+          </div>
+          <div className="mt-10 text-center">
+            <Button variant="link" asChild className="font-light text-primary">
+              <Link to="/servizi">
+                Approfondisci i servizi
+                <ArrowRight className="ml-1 h-4 w-4" />
+              </Link>
+            </Button>
+          </div>
         </div>
       </section>
 
-      {/* CHECK-UP OPERATIVO - ANTEPRIMA */}
-      <section className="py-28 relative bg-gradient-to-b from-background to-card/20">
+      <section className="relative bg-gradient-to-b from-background to-card/20 py-28">
         <div className="container mx-auto px-6">
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }} className="max-w-3xl mx-auto text-center space-y-8">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/5">
-              <Search className="w-4 h-4 text-primary" />
-              <span className="text-sm text-primary font-light">Il nostro servizio principale</span>
-            </div>
-
-            <h2 className="text-3xl md:text-5xl lg:text-6xl font-light text-foreground">
-              Check-up Operativo in <span className="text-primary">7 giorni</span>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mb-12 text-center"
+          >
+            <h2 className="text-3xl font-light text-foreground md:text-5xl">
+              Competenze <span className="text-primary">trasversali</span>
             </h2>
+          </motion.div>
+          <div className="mx-auto grid max-w-6xl gap-6 sm:grid-cols-2">
+            {homeCrossSkills.map((skill, i) => {
+              const Icon = crossLucide[i];
+              return (
+                <motion.div
+                  key={skill.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.05 }}
+                  className="rounded-2xl border border-border/20 bg-card/10 p-6 backdrop-blur-sm"
+                >
+                  <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
+                    <Icon className="h-5 w-5 text-primary" />
+                  </div>
+                  <AnimatePresence mode="wait">
+                    <motion.div key={`${skill.id}-${nerd}`} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.2 }}>
+                      <h3 className="text-lg font-light text-foreground">{t(skill.title, nerd)}</h3>
+                      <p className="mt-2 text-sm font-light leading-relaxed text-muted-foreground">{t(skill.desc, nerd)}</p>
+                    </motion.div>
+                  </AnimatePresence>
+                  {nerd && <StackChips items={[...skill.stack]} />}
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
 
-            <p className="text-lg text-muted-foreground font-light leading-relaxed max-w-2xl mx-auto">
-              Una diagnosi strutturata dei vostri workflow operativi. Identifichiamo le 3–5 criticità prioritarie e vi consegniamo un piano d'azione concreto a 30, 60 e 90 giorni.
-            </p>
-
-            <div className="flex items-start gap-4 p-6 rounded-2xl border border-primary/20 bg-primary/5 text-left max-w-2xl mx-auto">
-              <CheckCircle2 className="w-6 h-6 text-primary mt-0.5 flex-shrink-0" />
-              <p className="text-foreground/80 font-light">
-                <strong className="font-medium text-foreground">Il check-up è un prodotto completo.</strong> Alla fine avrete un quadro chiaro delle criticità e un piano operativo per intervenire in autonomia, senza bisogno di altri servizi.
-              </p>
+      <section className="relative py-28">
+        <div className="container mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mx-auto max-w-3xl text-center"
+          >
+            <AnimatePresence mode="wait">
+              <motion.div key={nerd ? "sec-n" : "sec-p"} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.2 }}>
+                <h2 className="text-3xl font-light text-foreground md:text-5xl">{t(homeSectorsStrip.title, nerd)}</h2>
+                <p className="mt-4 font-light text-muted-foreground">{t(homeSectorsStrip.subtitle, nerd)}</p>
+              </motion.div>
+            </AnimatePresence>
+            <div className="mt-8 flex flex-wrap justify-center gap-3">
+              {sectorPills.map((label) => (
+                <span
+                  key={label}
+                  className="rounded-full border border-border/30 bg-card/20 px-4 py-2 text-sm font-light text-foreground/80"
+                >
+                  {label}
+                </span>
+              ))}
             </div>
-
-            <Button size="lg" asChild className="group bg-primary hover:bg-primary/90 text-primary-foreground text-lg px-10 py-7 rounded-full font-light tracking-wide transition-all duration-500 hover:shadow-[0_0_60px_hsl(var(--primary)/0.4)] hover:scale-105">
-              <Link to="/checkup-operativo">
-                Scopri come funziona
-                <ArrowRight className="ml-2 group-hover:translate-x-2 transition-transform duration-300" />
-              </Link>
+            <Button asChild variant="outline" className="mt-10 rounded-full font-light">
+              <Link to="/settori">Vedi i settori</Link>
             </Button>
           </motion.div>
         </div>
       </section>
 
-      {/* SERVIZI AGGIUNTIVI */}
-      <section className="py-28 relative">
+      <section className="relative bg-gradient-to-b from-background to-card/20 py-24">
         <div className="container mx-auto px-6">
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }} className="text-center mb-6">
-            <h2 className="text-3xl md:text-5xl lg:text-6xl font-light text-foreground mb-4">
-              Servizi di <span className="text-primary">attuazione</span>
-            </h2>
-            <p className="text-lg text-muted-foreground font-light max-w-2xl mx-auto mb-3">
-              Separati dal check-up, acquistabili a parte. Per chi vuole un affiancamento nell'applicazione del piano o ha bisogno di interventi su problematiche particolarmente complesse.
-            </p>
-            <p className="text-sm text-muted-foreground/70 font-light max-w-xl mx-auto">
-              Non sono obbligatori: il check-up vi dà già tutto per intervenire. Questi servizi servono quando preferite non farlo da soli.
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto mt-12">
-            {percorsiAttuazione.map((p, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="group rounded-3xl border border-border/20 bg-card/10 backdrop-blur-sm p-8 space-y-4 hover:border-primary/30 transition-all duration-500"
-              >
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-border/30 bg-card/20 mb-2">
-                  <span className="text-xs text-muted-foreground font-light">Servizio aggiuntivo</span>
-                </div>
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center group-hover:scale-110 transition-transform duration-500 shadow-lg shadow-primary/20">
-                  <p.icon className="w-6 h-6 text-primary-foreground" />
-                </div>
-                <h3 className="text-xl font-light text-foreground group-hover:text-primary transition-colors duration-300">{p.title}</h3>
-                <p className="text-sm text-muted-foreground font-light leading-relaxed">{p.desc}</p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mx-auto max-w-2xl rounded-3xl border border-border/20 bg-card/10 p-10 text-center backdrop-blur-sm"
+          >
+            <AnimatePresence mode="wait">
+              <motion.div key={nerd ? "c-n" : "c-p"} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.2 }}>
+                <h2 className="text-2xl font-light text-foreground md:text-3xl">{t(homeConsulting.title, nerd)}</h2>
+                <p className="mt-4 font-light leading-relaxed text-muted-foreground">{t(homeConsulting.desc, nerd)}</p>
               </motion.div>
-            ))}
-          </div>
+            </AnimatePresence>
+            <Button asChild variant="link" className="mt-4 font-light text-primary">
+              <Link to="/consulenza">Scopri la consulenza</Link>
+            </Button>
+          </motion.div>
         </div>
       </section>
 
-      {/* CTA FINALE */}
-      <section className="py-28 relative bg-gradient-to-b from-background to-card/20">
+      <section className="relative py-28">
         <div className="container mx-auto px-6 text-center">
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }} className="max-w-2xl mx-auto space-y-8">
-            <h2 className="text-3xl md:text-5xl font-light text-foreground">
-              <span className="block">Parliamo del vostro</span>
-              <span className="text-primary">contesto operativo.</span>
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mx-auto max-w-2xl space-y-8">
+            <h2 className="text-3xl font-light text-foreground md:text-5xl">
+              Un progetto da <span className="text-primary">fare insieme?</span>
             </h2>
-            <p className="text-lg text-muted-foreground font-light">
-              20 minuti per capire se ha senso lavorare insieme. Nessun impegno.
-            </p>
-            <Button size="lg" asChild className="group bg-primary hover:bg-primary/90 text-primary-foreground text-lg px-10 py-7 rounded-full font-light tracking-wide transition-all duration-500 hover:shadow-[0_0_60px_hsl(var(--primary)/0.4)] hover:scale-105">
+            <p className="text-lg font-light text-muted-foreground">Raccontateci obiettivi e tempi: vi rispondiamo con chiarezza.</p>
+            <Button
+              size="lg"
+              asChild
+              className="group rounded-full bg-primary px-10 py-7 text-lg font-light text-primary-foreground transition-all duration-500 hover:scale-105 hover:bg-primary/90 hover:shadow-[0_0_60px_hsl(var(--primary)/0.4)]"
+            >
               <Link to="/contattaci">
                 Contattaci
-                <ArrowRight className="ml-2 group-hover:translate-x-2 transition-transform duration-300" />
+                <ArrowRight className="ml-2 transition-transform duration-300 group-hover:translate-x-2" />
               </Link>
             </Button>
           </motion.div>

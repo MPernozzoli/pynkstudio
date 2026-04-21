@@ -2,13 +2,14 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import { ThemeProvider } from "next-themes";
+import { NerdModeProvider } from "@/contexts/NerdModeContext";
 import Index from "./pages/Index";
-import CheckupOperativo from "./pages/CheckupOperativo";
-import PerLeAziende from "./pages/PerLeAziende";
-import Metodo from "./pages/Metodo";
+import Servizi from "./pages/Servizi";
+import Settori from "./pages/Settori";
+import Consulenza from "./pages/Consulenza";
 import Contattaci from "./pages/Contattaci";
 import AltriProgetti from "./pages/AltriProgetti";
 import NotFound from "./pages/NotFound";
@@ -25,17 +26,22 @@ const App = () => (
           <Toaster />
           <Sonner />
           <BrowserRouter>
-            <ScrollToTop />
-            <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="/checkup-operativo" element={<CheckupOperativo />} />
-              <Route path="/per-le-aziende" element={<PerLeAziende />} />
-              <Route path="/metodo" element={<Metodo />} />
-              <Route path="/contattaci" element={<Contattaci />} />
-              <Route path="/altri-progetti" element={<AltriProgetti />} />
-              <Route path="/unsubscribe" element={<Unsubscribe />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
+            <NerdModeProvider>
+              <ScrollToTop />
+              <Routes>
+                <Route path="/" element={<Index />} />
+                <Route path="/servizi" element={<Servizi />} />
+                <Route path="/settori" element={<Settori />} />
+                <Route path="/consulenza" element={<Consulenza />} />
+                <Route path="/checkup-operativo" element={<Navigate to="/consulenza" replace />} />
+                <Route path="/per-le-aziende" element={<Navigate to="/consulenza" replace />} />
+                <Route path="/metodo" element={<Navigate to="/consulenza" replace />} />
+                <Route path="/contattaci" element={<Contattaci />} />
+                <Route path="/altri-progetti" element={<AltriProgetti />} />
+                <Route path="/unsubscribe" element={<Unsubscribe />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </NerdModeProvider>
           </BrowserRouter>
         </TooltipProvider>
       </QueryClientProvider>

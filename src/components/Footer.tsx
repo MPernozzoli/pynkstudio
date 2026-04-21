@@ -7,9 +7,9 @@ const Footer = () => {
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex flex-wrap items-center justify-center gap-4 text-xs text-muted-foreground/70 font-light">
-            <Link to="/checkup-operativo" className="hover:text-primary transition-colors">Check-up Operativo</Link>
-            <Link to="/per-le-aziende" className="hover:text-primary transition-colors">Per le aziende</Link>
-            <Link to="/metodo" className="hover:text-primary transition-colors">Metodo</Link>
+            <Link to="/servizi" className="hover:text-primary transition-colors">Servizi</Link>
+            <Link to="/settori" className="hover:text-primary transition-colors">Settori</Link>
+            <Link to="/consulenza" className="hover:text-primary transition-colors">Consulenza</Link>
             <Link to="/contattaci" className="hover:text-primary transition-colors">Contattaci</Link>
             <Link to="/altri-progetti" className="hover:text-primary transition-colors">Altri progetti</Link>
           </div>

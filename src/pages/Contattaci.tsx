@@ -87,7 +87,7 @@ const Contattaci = () => {
     <div className="min-h-screen bg-background overflow-x-hidden">
       <PageSEO
         title="Contattaci — PYNK STUDIO"
-        description="Parliamo del vostro contesto operativo. Call preliminare di 20 minuti, senza impegno."
+        description="Parliamo del vostro progetto digitale o della consulenza operativa. Call di 20 minuti, senza impegno."
         path="/contattaci" />
 
       <Navbar />
@@ -98,10 +98,10 @@ const Contattaci = () => {
             <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }} className="text-center mb-12 space-y-4">
               <h1 className="text-4xl md:text-6xl font-light text-foreground">
                 <span className="block">Parliamo del vostro</span>
-                <span className="text-primary">contesto operativo.</span>
+                <span className="text-primary">progetto.</span>
               </h1>
               <p className="text-lg text-muted-foreground font-light max-w-xl mx-auto">
-                Compilate il form o scriveteci direttamente. La call preliminare è di 20 minuti e senza impegno.
+                Sviluppo software o consulenza operativa: compilate il form o scriveteci. Call di 20 minuti, senza impegno.
               </p>
             </motion.div>
 
@@ -120,7 +120,7 @@ const Contattaci = () => {
                 <span className="text-sm text-foreground font-light">+39 351 3768607</span>
               </a>
 
-              <a href="https://wa.me/393513768607?text=Buongiorno%2C%20vorrei%20informazioni%20sul%20check-up%20operativo." target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 rounded-full border border-border/30 bg-card/20 hover:border-primary/30 transition-colors">
+              <a href="https://wa.me/393513768607?text=Buongiorno%2C%20vorrei%20informazioni%20su%20PYNK%20STUDIO." target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 rounded-full border border-border/30 bg-card/20 hover:border-primary/30 transition-colors">
                 <MessageCircle className="w-4 h-4 text-primary" />
                 <span className="text-sm text-foreground font-light">Scrivici su WhatsApp</span>
               </a>
@@ -162,7 +162,7 @@ const Contattaci = () => {
 
               <div className="space-y-2">
                 <label htmlFor="message" className="text-sm font-light text-foreground/80">Breve descrizione del problema *</label>
-                <Textarea id="message" value={formData.message} onChange={(e) => setFormData({ ...formData, message: e.target.value })} className="bg-input border-border/50 focus:border-primary min-h-[150px] resize-none" placeholder="Descrivete brevemente la situazione operativa attuale..." />
+                <Textarea id="message" value={formData.message} onChange={(e) => setFormData({ ...formData, message: e.target.value })} className="bg-input border-border/50 focus:border-primary min-h-[150px] resize-none" placeholder="Descrivete obiettivi, tempistiche o contesto (es. nuovo sito, app, integrazione, check-up operativo)..." />
               </div>
 
               <Button type="submit" size="lg" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground rounded-2xl py-6 text-lg font-light group hover:shadow-glow hover:scale-[1.02] transition-all">
