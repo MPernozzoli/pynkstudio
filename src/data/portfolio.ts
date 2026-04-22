@@ -1,6 +1,8 @@
-/** Progetti da workspace locale; `href` solo se verificato (HTTP 200). */
+/** Progetti curati; `href` solo se verificato (HTTP 200 o link TestFlight Apple). */
 
 export type PortfolioKind = "web" | "game" | "tool" | "mobile";
+
+export type PortfolioCardImage = "ducks" | "tocca";
 
 export type PortfolioItem = {
   id: string;
@@ -9,120 +11,84 @@ export type PortfolioItem = {
   descriptionPlain: string;
   descriptionNerd: string;
   stack: readonly string[];
-  /** URL pubblico verificato; assente se non deployato o non verificato */
   href?: string;
+  /** Icona app per card mobile (TestFlight) */
+  cardImage?: PortfolioCardImage;
+  /** Nota sotto la card quando non c’è href (es. work in progress) */
+  statusNote?: string;
 };
 
 export const portfolioItems: PortfolioItem[] = [
   {
-    id: "pynkstudio",
-    title: "PYNK STUDIO",
+    id: "perx",
+    title: "PerX",
     kind: "web",
-    descriptionPlain: "Sito istituzionale multi-pagina, consulenza e contatti con email transazionali.",
-    descriptionNerd: "Vite, React 18, React Router, shadcn/ui, Supabase Functions per mail, Helmet/JSON-LD.",
-    stack: ["React", "TypeScript", "Vite", "Tailwind", "Supabase"],
-    href: "https://pynkstudio.it",
+    descriptionPlain:
+      "Gestionale per studi peritali: pratiche di sinistro gestite in modo proattivo, con meno errori, meno contestazioni e tempi più corti — migliorando qualità del periziale e del processo.",
+    descriptionNerd:
+      "Web app dominio sinistri/perizie: workflow guidati, controlli incrociati, tracciamento stati, integrazioni verso portali e documentale. Focus su riduzione rework e tempi di ciclo.",
+    stack: ["React", "TypeScript", "Web app", "Workflow"],
+    href: "https://perx.it",
   },
   {
-    id: "nautic-planner",
-    title: "Nautic Planner",
-    kind: "web",
-    descriptionPlain: "Pianificazione nautica: imbarcazioni, tratte, equipaggio e checklist di sicurezza.",
-    descriptionNerd: "SPA Vite + shadcn/Radix, form complessi e stato lato client.",
-    stack: ["React", "Vite", "TypeScript", "Tailwind", "Zod"],
+    id: "catdispatcher",
+    title: "CAT Dispatcher",
+    kind: "tool",
+    descriptionPlain:
+      "Strumento web per studi peritali: coordina sul territorio le attività CAT in modo strutturato e, dove possibile, automatizza assegnazioni e comunicazioni tra parti coinvolte.",
+    descriptionNerd:
+      "Mappa e dominio CAT: ruoli peritali, enti territoriali, priorità e stati. Supabase + React per dati in tempo reale, notifiche e viste operative per chi lavora sul campo.",
+    stack: ["React", "Vite", "TypeScript", "Supabase", "Mappe"],
   },
   {
     id: "claim-connect",
     title: "Claim Connect",
     kind: "web",
-    descriptionPlain: "Area assicurato per gestione pratiche sinistri e comunicazioni strutturate.",
-    descriptionNerd: "React SPA, flussi guidati, integrazioni dati tipiche del dominio claims.",
+    descriptionPlain:
+      "Portale per l’assicurato: pratiche sinistro, documenti e messaggi in un flusso chiaro, senza perdere il filo tra email e allegati.",
+    descriptionNerd:
+      "SPA React, form e validazione lato client, API verso backend sinistri; modelli dati allineati al dominio claims e UX guidata.",
     stack: ["React", "Vite", "TypeScript"],
   },
   {
-    id: "catdispatcher",
-    title: "CAT Dispatcher",
-    kind: "web",
-    descriptionPlain: "Consultazione e gestione territoriale CAT per comuni e quartieri.",
-    descriptionNerd: "Vite, Supabase client, mappe e dati territoriali.",
-    stack: ["React", "Vite", "Supabase", "TypeScript"],
-  },
-  {
-    id: "sailingpantry-app",
-    title: "SailingPantry",
-    kind: "web",
-    descriptionPlain: "Applicazione web per organizzazione provisioning e pantry in barca.",
-    descriptionNerd: "React Router 7, Firebase, Zustand per stato reattivo.",
-    stack: ["React", "Vite", "Firebase", "Zustand"],
-  },
-  {
-    id: "errante",
-    title: "Errante",
-    kind: "web",
-    descriptionPlain: "Prodotto web Next.js con pagamenti, PDF e componenti motion.",
-    descriptionNerd: "Next.js 14 App-ready, Stripe, @react-pdf/renderer, Framer Motion.",
-    stack: ["Next.js", "React", "Stripe", "Tailwind", "Framer Motion"],
-  },
-  {
-    id: "sparky-chat",
-    title: "Sparky Chat",
-    kind: "tool",
-    descriptionPlain: "Interfaccia conversazionale e tooling interno PerX.",
-    descriptionNerd: "Chat UI, integrazione provider LLM, pattern tool-calling lato client.",
-    stack: ["React", "TypeScript"],
-  },
-  {
-    id: "perx-fs-app",
-    title: "PerX FS (Apple)",
-    kind: "mobile",
-    descriptionPlain: "App nativa per ecosistema Apple (gestione sinistri / field).",
-    descriptionNerd: "Swift, SwiftUI, integrazione backend e sicurezza piattaforma.",
-    stack: ["Swift", "SwiftUI", "Xcode"],
-  },
-  {
-    id: "what-the-duck",
-    title: "What The Duck",
-    kind: "game",
-    descriptionPlain: "Titolo Unreal Engine: gameplay 3D e iterazione su blueprint/C++.",
-    descriptionNerd: "Unreal Engine, .uproject, pipeline asset e build desktop.",
-    stack: ["Unreal Engine", "Blueprints", "C++"],
-  },
-  {
-    id: "stackobot",
-    title: "StackOBot",
-    kind: "game",
-    descriptionPlain: "Progetto template/formazione Unreal con focus su AI agent e stack.",
-    descriptionNerd: "UE5 sample, navigazione agente, integrazione moduli gameplay.",
-    stack: ["Unreal Engine", "UE5"],
-  },
-  {
-    id: "rts",
-    title: "RTS",
-    kind: "game",
-    descriptionPlain: "Strategia in tempo reale: unità, economia e loop di gioco in Unreal.",
-    descriptionNerd: "RTS architecture in UE, performance e LOD.",
-    stack: ["Unreal Engine", "C++"],
-  },
-  {
     id: "godots-journey",
-    title: "Godot’s Journey",
+    title: "Godot's Journey",
     kind: "game",
-    descriptionPlain: "Percorso di apprendimento / prototipo in Godot 4.",
-    descriptionNerd: "Godot 4, GDScript, scene e resource pipeline.",
-    stack: ["Godot", "GDScript"],
+    descriptionPlain:
+      "Gioco 3D in sviluppo su Godot: ambienti, personaggi e meccaniche in evoluzione; usciamo con link pubblico quando la build sarà pronta da condividere.",
+    descriptionNerd:
+      "Godot 4, pipeline 3D, GDScript, scene e risorse modulari; iterazione su camera, input e loop di gameplay.",
+    stack: ["Godot 4", "GDScript", "3D"],
+    statusNote: "In sviluppo — nessun link store al momento.",
   },
   {
-    id: "tower-defendant",
-    title: "Tower Defendant",
-    kind: "game",
-    descriptionPlain: "Tower defense in Unreal: onde, torri e bilanciamento.",
-    descriptionNerd: "Gameplay framework UE, UI e loop onda.",
-    stack: ["Unreal Engine"],
+    id: "ducks-in-business",
+    title: "Ducks in Business",
+    kind: "mobile",
+    descriptionPlain:
+      "Gioco mobile in beta su TestFlight: feedback in anteprima prima del rilascio sull’App Store.",
+    descriptionNerd:
+      "Build iOS via TestFlight, iterazione su UX touch, economia di gioco e sessioni corte.",
+    stack: ["iOS", "Swift", "TestFlight"],
+    href: "https://testflight.apple.com/join/2Myk6uNY",
+    cardImage: "ducks",
+  },
+  {
+    id: "tocca-a-te",
+    title: "Tocca a Te",
+    kind: "mobile",
+    descriptionPlain:
+      "Altro titolo mobile in anteprima su TestFlight: stessa filosofia — provare sul serio prima di pubblicare.",
+    descriptionNerd:
+      "Beta chiusa Apple TestFlight, raccolta crash/analytics, bilanciamento da sessioni reali.",
+    stack: ["iOS", "TestFlight"],
+    href: "https://testflight.apple.com/join/Q5uuDAGe",
+    cardImage: "tocca",
   },
 ];
 
 /** In evidenza sulla home (anteprima) */
-export const portfolioPreviewIds = ["pynkstudio", "nautic-planner", "errante"] as const;
+export const portfolioPreviewIds = ["perx", "catdispatcher", "claim-connect"] as const;
 
 export function getPortfolioPreview(): PortfolioItem[] {
   const order = [...portfolioPreviewIds];

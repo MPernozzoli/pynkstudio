@@ -13,7 +13,7 @@ const Lavori = () => {
     <div className="min-h-screen overflow-x-hidden bg-background">
       <PageSEO
         title="Lavori e referenze — PYNK STUDIO"
-        description="Selezione di progetti web, mobile, tool e titoli real-time 3D sviluppati dal team. Link solo dove il deploy è verificato."
+        description="Portfolio: software per studi peritali, tool territoriali, giochi mobile su TestFlight e titoli 3D in sviluppo. Link solo dove verificati."
         path="/lavori"
       />
       <Navbar />
@@ -47,7 +47,7 @@ const Lavori = () => {
             transition={{ delay: 0.12 }}
             className="mx-auto mt-6 max-w-2xl text-lg font-light leading-relaxed text-muted-foreground"
           >
-            Estratti dal nostro workspace (siti, tool, mobile, Unreal/Godot). I link esterni compaiono solo dopo verifica HTTP: niente URL “morti”.
+            Progetti che portiamo avanti oggi: dominio sinistri e perizie, strumenti sul territorio, beta iOS su TestFlight, Godot in lavorazione. I link compaiono solo quando ha senso cliccarli.
           </motion.p>
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.25 }} className="mt-8">
             <Button asChild variant="outline" className="rounded-full font-light">

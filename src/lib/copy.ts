@@ -25,8 +25,10 @@ export const homePortfolio = {
     nerd: "Portfolio · repo & prod",
   },
   subtitle: {
-    plain: "Estratto dai nostri progetti: web, tool, mobile e titoli in Unreal/Godot. I link partono solo se il sito risponde davvero.",
-    nerd: "Curated da workspace reale; href opzionale gated su HTTP 200; resto stack + descrizione tecnica in Nerd mode.",
+    plain:
+      "Selezione di lavori: web app, strumenti per studi peritali, mobile in beta su TestFlight e titoli 3D in sviluppo. Link solo dove è sensato aprirli.",
+    nerd:
+      "Manifest da workspace; href con gate su HTTP 200 o invite TestFlight; work-in-progress con nota in card; dettaglio stack in Nerd mode.",
   },
   cta: {
     plain: "Vedi tutti i lavori",

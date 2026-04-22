@@ -4,6 +4,8 @@ import type { PortfolioItem, PortfolioKind } from "@/data/portfolio";
 import { useNerdMode } from "@/contexts/NerdModeContext";
 import StackChips from "@/components/StackChips";
 import { cn } from "@/lib/utils";
+import ducksIcon from "@/assets/ducks-in-business-icon.png";
+import toccaATe from "@/assets/tocca-a-te-icon.png";
 
 const kindIcon = (k: PortfolioKind) => {
   switch (k) {
@@ -25,6 +27,18 @@ const kindLabel: Record<PortfolioKind, string> = {
   mobile: "Mobile",
 };
 
+const cardImageSrc = (id: PortfolioItem["cardImage"]) => {
+  if (id === "ducks") return ducksIcon;
+  if (id === "tocca") return toccaATe;
+  return null;
+};
+
+function linkCtaLabel(href: string | undefined): string {
+  if (!href) return "Apri sito";
+  if (href.includes("testflight.apple.com")) return "Prova su TestFlight";
+  return "Apri sito";
+}
+
 type PortfolioCardProps = {
   item: PortfolioItem;
   index?: number;
@@ -32,18 +46,30 @@ type PortfolioCardProps = {
 
 const PortfolioCard = ({ item, index = 0 }: PortfolioCardProps) => {
   const { nerd } = useNerdMode();
-  const Icon = kindIcon(item.kind);
+  const img = item.cardImage ? cardImageSrc(item.cardImage) : null;
+  const KindIcon = !img ? kindIcon(item.kind) : null;
+  const cta = linkCtaLabel(item.href);
 
   const content = (
     <>
-      <div className="mb-4 flex items-center justify-between gap-3">
-        <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-secondary shadow-md shadow-primary/15">
-          <Icon className="h-5 w-5 text-primary-foreground" />
+      {img && (
+        <div className="relative mb-4 flex w-full justify-center">
+          <img src={img} alt="" className="h-20 w-20 rounded-2xl object-cover shadow-lg ring-1 ring-border/30" />
+          <span className="absolute right-0 top-0 rounded-full border border-border/30 bg-muted/30 px-2.5 py-0.5 text-[10px] font-light uppercase tracking-wider text-muted-foreground">
+            {kindLabel[item.kind]}
+          </span>
         </div>
-        <span className="rounded-full border border-border/30 bg-muted/30 px-2.5 py-0.5 text-[10px] font-light uppercase tracking-wider text-muted-foreground">
-          {kindLabel[item.kind]}
-        </span>
-      </div>
+      )}
+      {!img && KindIcon && (
+        <div className="mb-4 flex items-center justify-between gap-3">
+          <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-secondary shadow-md shadow-primary/15">
+            <KindIcon className="h-5 w-5 text-primary-foreground" />
+          </div>
+          <span className="rounded-full border border-border/30 bg-muted/30 px-2.5 py-0.5 text-[10px] font-light uppercase tracking-wider text-muted-foreground">
+            {kindLabel[item.kind]}
+          </span>
+        </div>
+      )}
       <h3 className="text-lg font-light text-foreground md:text-xl">{item.title}</h3>
       <p className="mt-2 text-sm font-light leading-relaxed text-muted-foreground">{nerd ? item.descriptionNerd : item.descriptionPlain}</p>
       {nerd && <StackChips items={[...item.stack]} className="pt-3" />}
@@ -71,7 +97,7 @@ const PortfolioCard = ({ item, index = 0 }: PortfolioCardProps) => {
       >
         {content}
         <span className="mt-4 inline-flex items-center gap-1 text-xs font-light text-primary opacity-80 transition-opacity group-hover:opacity-100">
-          Apri sito
+          {cta}
           <ExternalLink className="h-3 w-3" />
         </span>
       </motion.a>
@@ -88,7 +114,9 @@ const PortfolioCard = ({ item, index = 0 }: PortfolioCardProps) => {
       className={cardClass}
     >
       {content}
-      <p className="mt-4 text-[11px] font-light text-muted-foreground/70">Deploy pubblico non verificato — referenza da repository locale.</p>
+      <p className="mt-4 text-[11px] font-light text-muted-foreground/80">
+        {item.statusNote ?? "Deploy pubblico non verificato — referenza da repository locale."}
+      </p>
     </motion.div>
   );
 };
