@@ -9,10 +9,21 @@ function hslPrimaryColor(): THREE.Color {
   return new THREE.Color(`hsl(${raw})`);
 }
 
+/** Lerp ~costante al variare del framerate (k ≈ quanto è “reattivo”). */
+function damp(current: number, target: number, lambda: number, delta: number) {
+  return THREE.MathUtils.lerp(current, target, 1 - Math.exp(-lambda * delta));
+}
+
 function OrganicMesh() {
   const groupRef = useRef<THREE.Group>(null);
+  const wireGroupRef = useRef<THREE.Group>(null);
+  const distortMatRef = useRef<{ distort: number } | null>(null);
   const [color, setColor] = useState(() => hslPrimaryColor());
-  const mouse = useRef({ x: 0, y: 0 });
+  /** Obiettivo puntatore normalizzato (-1…1), Y verso l’alto sullo schermo. */
+  const pointerTarget = useRef({ x: 0, y: 0 });
+  const pointerSmooth = useRef({ x: 0, y: 0 });
+  const pointerPrev = useRef({ x: 0, y: 0 });
+  const pointerSpeed = useRef(0);
 
   useEffect(() => {
     const sync = () => setColor(hslPrimaryColor());
@@ -23,12 +34,14 @@ function OrganicMesh() {
   }, []);
 
   useEffect(() => {
-    const onMove = (e: MouseEvent) => {
-      mouse.current.x = (e.clientX / window.innerWidth) * 2 - 1;
-      mouse.current.y = (e.clientY / window.innerHeight) * 2 - 1;
+    const norm = (e: PointerEvent) => {
+      const x = (e.clientX / Math.max(window.innerWidth, 1)) * 2 - 1;
+      const y = -((e.clientY / Math.max(window.innerHeight, 1)) * 2 - 1);
+      pointerTarget.current.x = x;
+      pointerTarget.current.y = y;
     };
-    window.addEventListener("mousemove", onMove, { passive: true });
-    return () => window.removeEventListener("mousemove", onMove);
+    window.addEventListener("pointermove", norm, { passive: true });
+    return () => window.removeEventListener("pointermove", norm);
   }, []);
 
   const baseRot = useRef(0);
@@ -36,12 +49,44 @@ function OrganicMesh() {
   useFrame((_, delta) => {
     const g = groupRef.current;
     if (!g) return;
+
+    const t = pointerTarget.current;
+    const s = pointerSmooth.current;
+    s.x = damp(s.x, t.x, 14, delta);
+    s.y = damp(s.y, t.y, 14, delta);
+
+    const vx = s.x - pointerPrev.current.x;
+    const vy = s.y - pointerPrev.current.y;
+    pointerPrev.current.x = s.x;
+    pointerPrev.current.y = s.y;
+    pointerSpeed.current = damp(pointerSpeed.current, Math.hypot(vx, vy) / Math.max(delta, 1e-4), 8, delta);
+
     baseRot.current += delta * 0.12;
-    const targetX = mouse.current.y * 0.35 + Math.sin(baseRot.current) * 0.08;
-    const targetY = mouse.current.x * 0.45 + Math.cos(baseRot.current * 0.7) * 0.1;
-    g.rotation.x = THREE.MathUtils.lerp(g.rotation.x, targetX, 0.06);
-    g.rotation.y = THREE.MathUtils.lerp(g.rotation.y, targetY, 0.06);
-    g.rotation.z = THREE.MathUtils.lerp(g.rotation.z, Math.sin(baseRot.current * 0.4) * 0.06, 0.04);
+    const bobX = Math.sin(baseRot.current) * 0.07;
+    const bobY = Math.cos(baseRot.current * 0.72) * 0.08;
+
+    const targetRotX = s.y * 0.55 + bobX;
+    const targetRotY = s.x * 0.62 + bobY;
+    g.rotation.x = damp(g.rotation.x, targetRotX, 10, delta);
+    g.rotation.y = damp(g.rotation.y, targetRotY, 10, delta);
+    g.rotation.z = damp(g.rotation.z, s.x * s.y * 0.14 + Math.sin(baseRot.current * 0.41) * 0.06, 6, delta);
+
+    g.position.x = damp(g.position.x, s.x * 0.48, 7, delta);
+    g.position.y = damp(g.position.y, s.y * 0.34, 7, delta);
+
+    const mat = distortMatRef.current;
+    if (mat) {
+      const radial = Math.min(Math.hypot(s.x, s.y), 1);
+      const wobble = Math.min(pointerSpeed.current * 3.2, 0.35);
+      const targetDistort = 0.34 + radial * 0.2 + wobble;
+      mat.distort = damp(mat.distort, targetDistort, 9, delta);
+    }
+
+    const wire = wireGroupRef.current;
+    if (wire) {
+      wire.rotation.x = s.y * -0.28;
+      wire.rotation.y = s.x * -0.42;
+    }
   });
 
   const secondary = useMemo(() => {
@@ -54,12 +99,22 @@ function OrganicMesh() {
     <group ref={groupRef} scale={1.45}>
       <mesh>
         <icosahedronGeometry args={[1, 20]} />
-        <MeshDistortMaterial color={color} roughness={0.25} metalness={0.35} speed={2.2} distort={0.38} radius={1} />
+        <MeshDistortMaterial
+          ref={distortMatRef}
+          color={color}
+          roughness={0.25}
+          metalness={0.35}
+          speed={2.2}
+          distort={0.38}
+          radius={1}
+        />
       </mesh>
-      <mesh scale={0.92}>
-        <icosahedronGeometry args={[1, 12]} />
-        <meshBasicMaterial color={secondary} wireframe transparent opacity={0.12} depthWrite={false} />
-      </mesh>
+      <group ref={wireGroupRef}>
+        <mesh scale={0.92}>
+          <icosahedronGeometry args={[1, 12]} />
+          <meshBasicMaterial color={secondary} wireframe transparent opacity={0.12} depthWrite={false} />
+        </mesh>
+      </group>
     </group>
   );
 }

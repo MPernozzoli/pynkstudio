@@ -51,6 +51,28 @@ export const portfolioItems: PortfolioItem[] = [
     stack: ["React", "Vite", "TypeScript"],
   },
   {
+    id: "bite-project",
+    title: "BITE Project",
+    kind: "web",
+    descriptionPlain:
+      "Sito del progetto narrativo a bordo della barca a vela S/Y Spritz: vita in mare, refit, lavoro da remoto, slow travel e scelte di vita consapevoli.",
+    descriptionNerd:
+      "Esperienza editoriale long-form, immagini e capitoli da viaggio; stack web moderno, SEO e performance per lettura immersiva.",
+    stack: ["React", "TypeScript", "Content"],
+    href: "https://biteproject.it",
+  },
+  {
+    id: "echoes",
+    title: "Echoes",
+    kind: "web",
+    descriptionPlain:
+      "Scoperta musicale guidata dall’intelligenza artificiale: descrivi un’emozione, un ricordo o un pensiero e trova brani che ci stanno dentro.",
+    descriptionNerd:
+      "Web app con orchestrazione LLM + catalogo/metadata musicali, prompt UX e ranking spiegabile lato interfaccia.",
+    stack: ["React", "TypeScript", "AI", "API"],
+    href: "https://echoesmusic.it",
+  },
+  {
     id: "godots-journey",
     title: "Godot's Journey",
     kind: "game",
@@ -66,10 +88,10 @@ export const portfolioItems: PortfolioItem[] = [
     title: "Ducks in Business",
     kind: "mobile",
     descriptionPlain:
-      "Gioco mobile in beta su TestFlight: feedback in anteprima prima del rilascio sull’App Store.",
+      "Sei una papera imprenditrice: parti dalla prima osteria e costruisci un impero nella ristorazione, tra gestione, crescita e humor.",
     descriptionNerd:
-      "Build iOS via TestFlight, iterazione su UX touch, economia di gioco e sessioni corte.",
-    stack: ["iOS", "Swift", "TestFlight"],
+      "Progressione economica e unlock, loop touch-first, UI leggere per sessioni brevi; build iOS distribuita via TestFlight durante l’iterazione.",
+    stack: ["iOS", "Swift", "Game design"],
     href: "https://testflight.apple.com/join/2Myk6uNY",
     cardImage: "ducks",
   },
@@ -78,10 +100,10 @@ export const portfolioItems: PortfolioItem[] = [
     title: "Tocca a Te",
     kind: "mobile",
     descriptionPlain:
-      "Altro titolo mobile in anteprima su TestFlight: stessa filosofia — provare sul serio prima di pubblicare.",
+      "Casual game pensato per stare insieme: turni veloci, regole semplici, ideale per giocare con gli amici offline nello stesso spazio.",
     descriptionNerd:
-      "Beta chiusa Apple TestFlight, raccolta crash/analytics, bilanciamento da sessioni reali.",
-    stack: ["iOS", "TestFlight"],
+      "Sessioni hot-seat / pass-and-play, niente dipendenza da server per il core loop; bilanciamento su feedback di playtest locale.",
+    stack: ["iOS", "Casual", "Multigiocatore locale"],
     href: "https://testflight.apple.com/join/Q5uuDAGe",
     cardImage: "tocca",
   },

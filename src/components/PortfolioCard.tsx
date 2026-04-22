@@ -46,30 +46,24 @@ type PortfolioCardProps = {
 
 const PortfolioCard = ({ item, index = 0 }: PortfolioCardProps) => {
   const { nerd } = useNerdMode();
-  const img = item.cardImage ? cardImageSrc(item.cardImage) : null;
-  const KindIcon = !img ? kindIcon(item.kind) : null;
+  const thumb = item.cardImage ? cardImageSrc(item.cardImage) : null;
+  const KindIcon = kindIcon(item.kind);
   const cta = linkCtaLabel(item.href);
 
   const content = (
     <>
-      {img && (
-        <div className="relative mb-4 flex w-full justify-center">
-          <img src={img} alt="" className="h-20 w-20 rounded-2xl object-cover shadow-lg ring-1 ring-border/30" />
-          <span className="absolute right-0 top-0 rounded-full border border-border/30 bg-muted/30 px-2.5 py-0.5 text-[10px] font-light uppercase tracking-wider text-muted-foreground">
-            {kindLabel[item.kind]}
-          </span>
-        </div>
-      )}
-      {!img && KindIcon && (
-        <div className="mb-4 flex items-center justify-between gap-3">
-          <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-secondary shadow-md shadow-primary/15">
+      <div className="mb-4 flex items-center justify-between gap-3">
+        <div className="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-gradient-to-br from-primary to-secondary shadow-md shadow-primary/15 ring-1 ring-primary/20">
+          {thumb ? (
+            <img src={thumb} alt="" className="h-full w-full object-cover" />
+          ) : (
             <KindIcon className="h-5 w-5 text-primary-foreground" />
-          </div>
-          <span className="rounded-full border border-border/30 bg-muted/30 px-2.5 py-0.5 text-[10px] font-light uppercase tracking-wider text-muted-foreground">
-            {kindLabel[item.kind]}
-          </span>
+          )}
         </div>
-      )}
+        <span className="rounded-full border border-border/30 bg-muted/30 px-2.5 py-0.5 text-[10px] font-light uppercase tracking-wider text-muted-foreground">
+          {kindLabel[item.kind]}
+        </span>
+      </div>
       <h3 className="text-lg font-light text-foreground md:text-xl">{item.title}</h3>
       <p className="mt-2 text-sm font-light leading-relaxed text-muted-foreground">{nerd ? item.descriptionNerd : item.descriptionPlain}</p>
       {nerd && <StackChips items={[...item.stack]} className="pt-3" />}
