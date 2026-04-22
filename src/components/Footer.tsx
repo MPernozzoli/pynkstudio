@@ -9,6 +9,7 @@ const Footer = () => {
           <div className="flex flex-wrap items-center justify-center gap-4 text-xs text-muted-foreground/70 font-light">
             <Link to="/servizi" className="hover:text-primary transition-colors">Servizi</Link>
             <Link to="/settori" className="hover:text-primary transition-colors">Settori</Link>
+            <Link to="/lavori" className="hover:text-primary transition-colors">Lavori</Link>
             <Link to="/consulenza" className="hover:text-primary transition-colors">Consulenza</Link>
             <Link to="/contattaci" className="hover:text-primary transition-colors">Contattaci</Link>
             <Link to="/altri-progetti" className="hover:text-primary transition-colors">Altri progetti</Link>

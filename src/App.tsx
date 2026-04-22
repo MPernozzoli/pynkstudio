@@ -10,6 +10,7 @@ import Index from "./pages/Index";
 import Servizi from "./pages/Servizi";
 import Settori from "./pages/Settori";
 import Consulenza from "./pages/Consulenza";
+import Lavori from "./pages/Lavori";
 import Contattaci from "./pages/Contattaci";
 import AltriProgetti from "./pages/AltriProgetti";
 import NotFound from "./pages/NotFound";
@@ -33,6 +34,7 @@ const App = () => (
                 <Route path="/servizi" element={<Servizi />} />
                 <Route path="/settori" element={<Settori />} />
                 <Route path="/consulenza" element={<Consulenza />} />
+                <Route path="/lavori" element={<Lavori />} />
                 <Route path="/checkup-operativo" element={<Navigate to="/consulenza" replace />} />
                 <Route path="/per-le-aziende" element={<Navigate to="/consulenza" replace />} />
                 <Route path="/metodo" element={<Navigate to="/consulenza" replace />} />

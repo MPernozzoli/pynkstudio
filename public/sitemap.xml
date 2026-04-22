@@ -6,28 +6,33 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://pynkstudio.it/checkup-operativo</loc>
+    <loc>https://pynkstudio.it/servizi</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://pynkstudio.it/per-le-aziende</loc>
+    <loc>https://pynkstudio.it/settori</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://pynkstudio.it/metodo</loc>
+    <loc>https://pynkstudio.it/lavori</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://pynkstudio.it/consulenza</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://pynkstudio.it/contattaci</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.85</priority>
   </url>
   <url>
     <loc>https://pynkstudio.it/altri-progetti</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.3</priority>
+    <priority>0.35</priority>
   </url>
 </urlset>

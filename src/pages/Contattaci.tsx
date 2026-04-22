@@ -87,7 +87,7 @@ const Contattaci = () => {
     <div className="min-h-screen bg-background overflow-x-hidden">
       <PageSEO
         title="Contattaci — PYNK STUDIO"
-        description="Parliamo del vostro progetto digitale o della consulenza operativa. Call di 20 minuti, senza impegno."
+        description="Richiedi una call di 20 minuti: nuovo prodotto digitale, integrazione o check-up operativo. Nessun impegno."
         path="/contattaci" />
 
       <Navbar />

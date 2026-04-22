@@ -51,7 +51,7 @@ const Consulenza = () => {
     <div className="min-h-screen bg-background overflow-x-hidden">
       <PageSEO
         title="Consulenza operativa PMI — PYNK STUDIO"
-        description="Check-up operativo in 7 giorni e affiancamento su processi. Servizio complementare allo sviluppo software."
+        description="Check-up in 7 giorni, metodo a 5 fasi, piano 30/60/90. Complementare allo sviluppo: prima ordine nei processi, poi il software."
         path="/consulenza"
       />
       <Navbar />

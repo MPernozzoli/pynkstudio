@@ -10,6 +10,7 @@ import NerdToggle from "@/components/NerdToggle";
 const navLinks = [
   { label: "Servizi", to: "/servizi" },
   { label: "Settori", to: "/settori" },
+  { label: "Lavori", to: "/lavori" },
   { label: "Consulenza", to: "/consulenza" },
 ];
 

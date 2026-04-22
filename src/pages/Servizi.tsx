@@ -11,6 +11,12 @@ import StackChips from "@/components/StackChips";
 
 const icons = [Globe, LayoutDashboard, Smartphone, Monitor, Bot] as const;
 
+const staggerParent = { hidden: {}, show: { transition: { staggerChildren: 0.1, delayChildren: 0.05 } } };
+const staggerItem = {
+  hidden: { opacity: 0, y: 30 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.52, ease: [0.22, 1, 0.36, 1] as const } },
+};
+
 const Servizi = () => {
   const { nerd } = useNerdMode();
 
@@ -18,7 +24,7 @@ const Servizi = () => {
     <div className="min-h-screen overflow-x-hidden bg-background">
       <PageSEO
         title="Servizi di sviluppo — PYNK STUDIO"
-        description="Siti web, web app, app mobile, desktop e automazioni. Software house italiana."
+        description="Siti e landing, web app, app iOS/Android, desktop macOS/Windows, automazioni e AI. Stack dichiarato in modalità tecnica."
         path="/servizi"
       />
       <Navbar />
@@ -69,17 +75,21 @@ const Servizi = () => {
 
       <section className="relative py-24">
         <div className="container mx-auto px-6">
-          <div className="mx-auto grid max-w-6xl gap-8 md:grid-cols-1">
+          <motion.div
+            className="mx-auto grid max-w-6xl gap-8 md:grid-cols-1"
+            variants={staggerParent}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "-50px" }}
+          >
             {serviziCards.map((card, index) => {
               const Icon = icons[index] ?? Globe;
               return (
                 <motion.article
                   key={card.id}
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.45, delay: index * 0.06 }}
-                  className="group rounded-3xl border border-border/20 bg-card/10 p-8 backdrop-blur-sm transition-all duration-500 hover:border-primary/30 md:p-10"
+                  variants={staggerItem}
+                  whileHover={{ y: -3 }}
+                  className="group rounded-3xl border border-border/20 bg-card/10 p-8 backdrop-blur-sm transition-all duration-500 hover:border-primary/35 hover:shadow-[0_24px_60px_-28px_hsl(var(--primary)/0.12)] md:p-10"
                 >
                   <div className="flex flex-col gap-6 md:flex-row md:items-start">
                     <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-secondary shadow-lg shadow-primary/20 transition-transform duration-500 group-hover:scale-105">
@@ -104,7 +114,7 @@ const Servizi = () => {
                 </motion.article>
               );
             })}
-          </div>
+          </motion.div>
         </div>
       </section>
 

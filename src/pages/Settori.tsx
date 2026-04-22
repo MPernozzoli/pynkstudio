@@ -11,6 +11,12 @@ import StackChips from "@/components/StackChips";
 
 const icons = [ShoppingBag, Briefcase, Factory, Landmark, Building2] as const;
 
+const staggerParent = { hidden: {}, show: { transition: { staggerChildren: 0.09, delayChildren: 0.04 } } };
+const staggerItem = {
+  hidden: { opacity: 0, y: 26 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.48, ease: [0.22, 1, 0.36, 1] as const } },
+};
+
 const Settori = () => {
   const { nerd } = useNerdMode();
 
@@ -18,7 +24,7 @@ const Settori = () => {
     <div className="min-h-screen overflow-x-hidden bg-background">
       <PageSEO
         title="Settori — PYNK STUDIO"
-        description="E-commerce, servizi professionali, industria, cultura e turismo, PA. Sviluppo software su misura."
+        description="E-commerce, studi professionali, PMI e industria, cultura e turismo, PA: soluzioni web e integrazioni su misura."
         path="/settori"
       />
       <Navbar />
@@ -69,17 +75,21 @@ const Settori = () => {
 
       <section className="relative py-24">
         <div className="container mx-auto px-6">
-          <div className="mx-auto grid max-w-6xl gap-6 md:grid-cols-2">
+          <motion.div
+            className="mx-auto grid max-w-6xl gap-6 md:grid-cols-2"
+            variants={staggerParent}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "-45px" }}
+          >
             {settoriCards.map((card, index) => {
               const Icon = icons[index] ?? Building2;
               return (
                 <motion.article
                   key={card.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: index * 0.05 }}
-                  className="rounded-3xl border border-border/20 bg-card/10 p-8 backdrop-blur-sm transition-colors hover:border-primary/25"
+                  variants={staggerItem}
+                  whileHover={{ y: -3 }}
+                  className="rounded-3xl border border-border/20 bg-card/10 p-8 backdrop-blur-sm transition-colors duration-500 hover:border-primary/30 hover:shadow-[0_20px_50px_-24px_hsl(var(--primary)/0.1)]"
                 >
                   <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-secondary shadow-md shadow-primary/15">
                     <Icon className="h-6 w-6 text-primary-foreground" />
@@ -94,7 +104,7 @@ const Settori = () => {
                 </motion.article>
               );
             })}
-          </div>
+          </motion.div>
         </div>
       </section>
 

@@ -8,14 +8,29 @@ export function t(d: Dual, nerd: boolean): string {
 
 export const homeHero = {
   title: {
-    plain: "Software house italiana. Siti, app e strumenti su misura.",
-    nerd: "Full-stack studio · TypeScript-first · ship to prod.",
+    plain: "Costruiamo software che regge il mondo reale.",
+    nerd: "Engineering-first · TypeScript · da idea a produzione.",
   },
   subtitle: {
     plain:
-      "Progettiamo e realizziamo prodotti digitali chiari e affidabili: dal sito vetrina alla web app, dalle app mobile alle applicazioni desktop. Parliamo la vostra lingua, non solo quella del codice.",
+      "Siti, web app, mobile e desktop quando serve qualcosa di più del generico. Pochi fronzoli, molta cura su performance, accessibilità e manutenibilità.",
     nerd:
-      "Next.js / React, API REST e GraphQL, Postgres (Supabase), SwiftUI & Kotlin, Electron/Tauri dove serve. CI/CD, osservabilità e accessibilità come default, non optional.",
+      "React/Next, API REST/GraphQL, Postgres & Supabase, SwiftUI/Kotlin, Electron/Tauri. Osservabilità, test mirati e deploy ripetibili — non demo usa-e-getta.",
+  },
+};
+
+export const homePortfolio = {
+  title: {
+    plain: "Dove abbiamo già messo le mani",
+    nerd: "Portfolio · repo & prod",
+  },
+  subtitle: {
+    plain: "Estratto dai nostri progetti: web, tool, mobile e titoli in Unreal/Godot. I link partono solo se il sito risponde davvero.",
+    nerd: "Curated da workspace reale; href opzionale gated su HTTP 200; resto stack + descrizione tecnica in Nerd mode.",
+  },
+  cta: {
+    plain: "Vedi tutti i lavori",
+    nerd: "Full manifest /lavori",
   },
 };
 
@@ -25,7 +40,7 @@ export const homeDevPillars = [
     title: { plain: "Siti e web app", nerd: "Web & product engineering" },
     desc: {
       plain:
-        "Landing, e-commerce, portali e gestionali che il team usa davvero: veloci, ordinati, facili da aggiornare.",
+        "Dal sito vetrina al portale con login: velocità percepita, SEO sensato e pannello che non spaventa chi deve aggiornarlo.",
       nerd:
         "Next.js App Router, RSC dove utile, Tailwind, shadcn/ui, CMS headless (Sanity/Payload), Vercel/edge, SEO tecnico e Core Web Vitals.",
     },
@@ -36,7 +51,7 @@ export const homeDevPillars = [
     title: { plain: "App iOS e Android", nerd: "Mobile · native & cross" },
     desc: {
       plain:
-        "App per clienti e collaboratori: notifiche, offline, integrazione con i vostri sistemi.",
+        "Per utenti finali o squadre sul campo: notifiche, sessione sicura, integrazione con i vostri backend.",
       nerd:
         "SwiftUI/UIKit per iOS, Kotlin/Jetpack su Android, React Native/Expo per MVP cross-platform, push, keychain, deep linking, store release.",
     },
@@ -120,9 +135,20 @@ export const homeConsulting = {
   },
   desc: {
     plain:
-      "Oltre allo sviluppo, affianchiamo piccole e medie imprese a mettere ordine in processi e responsabilità — ad esempio con un check-up operativo in 7 giorni.",
+      "Quando il problema non è solo “manca l’app” ma manca ordine in chi fa cosa: check-up in 7 giorni, piano 30/60/90, niente fuffa.",
     nerd:
-      "Discovery operativo, workflow mapping, RACI, handoff verso software interno o commissionato. Non sostituisce legal/HR.",
+      "Workflow discovery, RACI, handoff verso backlog tecnico. Non legal/HR; output misurabile verso execution.",
+  },
+};
+
+export const homeSectionLeads = {
+  whatWeDo: {
+    plain: "Tre pilastri che tocchiamo in quasi ogni mandato.",
+    nerd: "Delivery surfaces: web, mobile, desktop runtimes.",
+  },
+  cross: {
+    plain: "Ciò che attraversa ogni stack: dati, integrazioni, UX, automazioni.",
+    nerd: "Cross-cutting concerns: a11y, APIs, observability, ML hooks.",
   },
 };
 
@@ -133,9 +159,9 @@ export const serviziPage = {
   },
   heroSubtitle: {
     plain:
-      "Dal sito che racconta la vostra attività agli strumenti che fanno funzionare l’azienda ogni giorno.",
+      "Dalla landing che converte al gestionale che toglie email infinite: un solo modo di lavorare — chiaro, misurabile, documentato.",
     nerd:
-      "Stack dichiarato per trasparenza. Ogni progetto ha architettura, repository, ambienti e handover documentato.",
+      "ADR leggeri, repo strutturati, env per staging/prod, contract test sulle API critiche. Handover: non vi lasciamo un black box.",
   },
 } as const;
 
@@ -204,7 +230,7 @@ export const settoriPage = {
   },
   heroSubtitle: {
     plain:
-      "Stesso rigore tecnico, linguaggio adattato al vostro mercato. Esempi generici, senza nomi cliente.",
+      "Stesso metodo di ingegneria, lessico adattato al settore: meno slide, più flussi e integrazioni che sanno di produzione.",
     nerd:
       "Blueprint riusabili: auth multi-ruolo, cataloghi, prenotazioni, documentale, integrazioni ERP leggere.",
   },
