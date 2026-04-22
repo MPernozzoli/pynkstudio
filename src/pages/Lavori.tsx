@@ -12,8 +12,8 @@ const Lavori = () => {
   return (
     <div className="min-h-screen overflow-x-hidden bg-background">
       <PageSEO
-        title="Lavori e referenze — PYNK STUDIO"
-        description="Portfolio: software per studi peritali, tool territoriali, giochi mobile su TestFlight e titoli 3D in sviluppo. Link solo dove verificati."
+        title="Lavori — PYNK STUDIO"
+        description="Prodotti e siti che abbiamo realizzato: software per studi professionali, strumenti operativi, esperienze web, mobile e gioco."
         path="/lavori"
       />
       <Navbar />
@@ -26,13 +26,6 @@ const Lavori = () => {
           />
         </div>
         <div className="container relative z-10 mx-auto px-6 text-center">
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="mb-3 text-sm font-light tracking-wide text-muted-foreground"
-          >
-            Referenze operative
-          </motion.p>
           <motion.h1
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
@@ -47,7 +40,7 @@ const Lavori = () => {
             transition={{ delay: 0.12 }}
             className="mx-auto mt-6 max-w-2xl text-lg font-light leading-relaxed text-muted-foreground"
           >
-            Progetti che portiamo avanti oggi: dominio sinistri e perizie, strumenti sul territorio, beta iOS su TestFlight, Godot in lavorazione. I link compaiono solo quando ha senso cliccarli.
+            Dal gestionale al sito vetrina, dal coordinamento sul territorio al gioco per telefono: progetti reali, con una scheda che racconta contesto e valore per ciascuno.
           </motion.p>
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.25 }} className="mt-8">
             <Button asChild variant="outline" className="rounded-full font-light">

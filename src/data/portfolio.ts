@@ -1,6 +1,6 @@
-/** Progetti curati; `href` solo se verificato (HTTP 200 o link TestFlight Apple). */
+/** Voci portfolio mostrate in /lavori e in anteprima home. */
 
-export type PortfolioKind = "web" | "game" | "tool" | "mobile";
+export type PortfolioKind = "web" | "game" | "tool" | "mobile" | "desktop";
 
 export type PortfolioCardImage = "ducks" | "tocca";
 
@@ -22,12 +22,12 @@ export const portfolioItems: PortfolioItem[] = [
   {
     id: "perx",
     title: "PerX",
-    kind: "web",
+    kind: "desktop",
     descriptionPlain:
-      "Gestionale per studi peritali: pratiche di sinistro gestite in modo proattivo, con meno errori, meno contestazioni e tempi più corti — migliorando qualità del periziale e del processo.",
+      "Gestionale desktop per studi peritali: pratiche di sinistro in ordine e con approccio proattivo, meno errori e contestazioni, tempi di gestione più contenuti, qualità più alta su periziale e processo.",
     descriptionNerd:
-      "Web app dominio sinistri/perizie: workflow guidati, controlli incrociati, tracciamento stati, integrazioni verso portali e documentale. Focus su riduzione rework e tempi di ciclo.",
-    stack: ["React", "TypeScript", "Web app", "Workflow"],
+      "Client desktop sul dominio sinistri/perizie: workflow guidati, controlli incrociati, stati e integrazioni con portali e documentale; fuori dal browser per chi lavora tutto il giorno sul gestionale.",
+    stack: ["Desktop", "TypeScript", "Workflow"],
     href: "https://perx.it",
   },
   {
@@ -35,20 +35,11 @@ export const portfolioItems: PortfolioItem[] = [
     title: "CAT Dispatcher",
     kind: "tool",
     descriptionPlain:
-      "Strumento web per studi peritali: coordina sul territorio le attività CAT in modo strutturato e, dove possibile, automatizza assegnazioni e comunicazioni tra parti coinvolte.",
+      "Per studi peritali: coordina sul territorio le attività CAT con logiche chiare e, dove serve, automazioni su assegnazioni e comunicazioni. Il sito presenta il prodotto; l’uso dell’applicazione è riservato a utenti autorizzati.",
     descriptionNerd:
-      "Mappa e dominio CAT: ruoli peritali, enti territoriali, priorità e stati. Supabase + React per dati in tempo reale, notifiche e viste operative per chi lavora sul campo.",
+      "Dominio CAT con mappa e ruoli (periti, enti, priorità, stati). React, Supabase, notifiche e viste operative in tempo reale; autenticazione per l’area applicativa.",
     stack: ["React", "Vite", "TypeScript", "Supabase", "Mappe"],
-  },
-  {
-    id: "claim-connect",
-    title: "Claim Connect",
-    kind: "web",
-    descriptionPlain:
-      "Portale per l’assicurato: pratiche sinistro, documenti e messaggi in un flusso chiaro, senza perdere il filo tra email e allegati.",
-    descriptionNerd:
-      "SPA React, form e validazione lato client, API verso backend sinistri; modelli dati allineati al dominio claims e UX guidata.",
-    stack: ["React", "Vite", "TypeScript"],
+    href: "https://catdispatcher.it",
   },
   {
     id: "bite-project",
@@ -77,11 +68,11 @@ export const portfolioItems: PortfolioItem[] = [
     title: "Godot's Journey",
     kind: "game",
     descriptionPlain:
-      "Gioco 3D in sviluppo su Godot: ambienti, personaggi e meccaniche in evoluzione; usciamo con link pubblico quando la build sarà pronta da condividere.",
+      "Avventura 3D in lavorazione su Godot: esplorazione, ambienti e personaggi che stiamo costruendo attorno a un’esperienza guidata e cinematografica.",
     descriptionNerd:
-      "Godot 4, pipeline 3D, GDScript, scene e risorse modulari; iterazione su camera, input e loop di gameplay.",
+      "Godot 4, pipeline 3D, GDScript, scene modulari; focus su camera, input e loop di gameplay coerenti col tono narrativo.",
     stack: ["Godot 4", "GDScript", "3D"],
-    statusNote: "In sviluppo — nessun link store al momento.",
+    statusNote: "In sviluppo.",
   },
   {
     id: "ducks-in-business",
@@ -90,7 +81,7 @@ export const portfolioItems: PortfolioItem[] = [
     descriptionPlain:
       "Sei una papera imprenditrice: parti dalla prima osteria e costruisci un impero nella ristorazione, tra gestione, crescita e humor.",
     descriptionNerd:
-      "Progressione economica e unlock, loop touch-first, UI leggere per sessioni brevi; build iOS distribuita via TestFlight durante l’iterazione.",
+      "Progressione economica e unlock, controlli touch, UI leggere per sessioni brevi; economia e pacing tarati su sessioni da divano.",
     stack: ["iOS", "Swift", "Game design"],
     href: "https://testflight.apple.com/join/2Myk6uNY",
     cardImage: "ducks",
@@ -102,19 +93,27 @@ export const portfolioItems: PortfolioItem[] = [
     descriptionPlain:
       "Casual game pensato per stare insieme: turni veloci, regole semplici, ideale per giocare con gli amici offline nello stesso spazio.",
     descriptionNerd:
-      "Sessioni hot-seat / pass-and-play, niente dipendenza da server per il core loop; bilanciamento su feedback di playtest locale.",
+      "Hot-seat e pass-and-play, regole leggere, core loop giocabile senza backend: pensato per sale e tavoli con un solo dispositivo.",
     stack: ["iOS", "Casual", "Multigiocatore locale"],
     href: "https://testflight.apple.com/join/Q5uuDAGe",
     cardImage: "tocca",
   },
 ];
 
-/** In evidenza sulla home (anteprima) */
-export const portfolioPreviewIds = ["perx", "catdispatcher", "claim-connect"] as const;
+const HOME_PREVIEW_COUNT = 3;
 
-export function getPortfolioPreview(): PortfolioItem[] {
-  const order = [...portfolioPreviewIds];
-  return order
-    .map((id) => portfolioItems.find((p) => p.id === id))
-    .filter((p): p is PortfolioItem => p != null);
+function shuffle<T>(items: readonly T[], rng: () => number): T[] {
+  const a = [...items];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(rng() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+/** Anteprima home: estrae `count` voci a caso dal pool completo (ogni mount = nuovo mazzo). */
+export function pickRandomPortfolioPreview(count = HOME_PREVIEW_COUNT): PortfolioItem[] {
+  const n = Math.min(count, portfolioItems.length);
+  if (n <= 0) return [];
+  return shuffle(portfolioItems, Math.random).slice(0, n);
 }

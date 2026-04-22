@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ExternalLink, Gamepad2, Globe, Smartphone, Wrench } from "lucide-react";
+import { ExternalLink, Gamepad2, Globe, Monitor, Smartphone, Wrench } from "lucide-react";
 import type { PortfolioItem, PortfolioKind } from "@/data/portfolio";
 import { useNerdMode } from "@/contexts/NerdModeContext";
 import StackChips from "@/components/StackChips";
@@ -17,6 +17,8 @@ const kindIcon = (k: PortfolioKind) => {
       return Wrench;
     case "mobile":
       return Smartphone;
+    case "desktop":
+      return Monitor;
   }
 };
 
@@ -25,6 +27,7 @@ const kindLabel: Record<PortfolioKind, string> = {
   game: "Gioco / 3D",
   tool: "Tool",
   mobile: "Mobile",
+  desktop: "Desktop",
 };
 
 const cardImageSrc = (id: PortfolioItem["cardImage"]) => {
@@ -109,7 +112,7 @@ const PortfolioCard = ({ item, index = 0 }: PortfolioCardProps) => {
     >
       {content}
       <p className="mt-4 text-[11px] font-light text-muted-foreground/80">
-        {item.statusNote ?? "Deploy pubblico non verificato — referenza da repository locale."}
+        {item.statusNote ?? "Scheda senza link esterno."}
       </p>
     </motion.div>
   );

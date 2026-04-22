@@ -26,13 +26,13 @@ export const homePortfolio = {
   },
   subtitle: {
     plain:
-      "Selezione di lavori: web app, strumenti per studi peritali, mobile in beta su TestFlight e titoli 3D in sviluppo. Link solo dove è sensato aprirli.",
+      "Alcuni prodotti e siti che abbiamo curato end-to-end: software professionale, strumenti operativi, esperienze web, mobile e titoli creativi.",
     nerd:
-      "Manifest da workspace; href con gate su HTTP 200 o invite TestFlight; work-in-progress con nota in card; dettaglio stack in Nerd mode.",
+      "Estratto di case study: stack, contesto e scelte tecniche dove aggiungono valore; attiva la modalità Nerd per il dettaglio.",
   },
   cta: {
     plain: "Vedi tutti i lavori",
-    nerd: "Full manifest /lavori",
+    nerd: "Apri /lavori",
   },
 };
 

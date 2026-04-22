@@ -1,4 +1,4 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useState } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -19,7 +19,7 @@ import {
 } from "@/lib/copy";
 import StackChips from "@/components/StackChips";
 import PortfolioCard from "@/components/PortfolioCard";
-import { getPortfolioPreview } from "@/data/portfolio";
+import { pickRandomPortfolioPreview } from "@/data/portfolio";
 
 const HeroScene = lazy(() => import("@/components/canvas/HeroScene"));
 
@@ -47,7 +47,7 @@ const staggerItem = {
 const Index = () => {
   const { nerd } = useNerdMode();
   const reduceMotion = useReducedMotion();
-  const preview = getPortfolioPreview();
+  const [preview] = useState(() => pickRandomPortfolioPreview());
 
   return (
     <div className="min-h-screen overflow-x-hidden bg-background">
