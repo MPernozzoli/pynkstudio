@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Download, Share2, Mail, Phone, Building2 } from "lucide-react";
+import { Download, Share2, Mail, Phone, Building2, Instagram } from "lucide-react";
 import pynkLogo from "@/assets/pynk-logo-transparent.png";
 import { useToast } from "@/hooks/use-toast";
 
@@ -15,9 +15,11 @@ const buildVCard = () =>
     "N:Pernozzoli;Massimo;;;",
     "ORG:Pynk Studio",
     "TITLE:CEO",
-    "TEL;TYPE=CELL:+393483782051",
+    "TEL;TYPE=CELL:+393513768607",
     "EMAIL;TYPE=INTERNET:info@pynkstudio.it",
     "URL:https://pynkstudio.it",
+    "URL:https://www.instagram.com/mpernozzoli",
+    "URL:https://www.instagram.com/pynkstudios",
     "END:VCARD",
     "",
   ].join("\r\n");
@@ -84,11 +86,11 @@ const VisitCardAd = () => {
 
             <div className="w-full space-y-3 text-left">
               <a
-                href="tel:+393483782051"
+                href="tel:+393513768607"
                 className="flex items-center gap-3 rounded-xl border border-border/30 bg-background/50 px-4 py-3 text-sm font-light transition-colors hover:border-primary/40 hover:bg-primary/5"
               >
                 <Phone className="w-4 h-4 text-primary shrink-0" />
-                <span className="text-foreground">+39 348 378 2051</span>
+                <span className="text-foreground">+39 351 376 8607</span>
               </a>
               <a
                 href="mailto:info@pynkstudio.it"
@@ -96,6 +98,24 @@ const VisitCardAd = () => {
               >
                 <Mail className="w-4 h-4 text-primary shrink-0" />
                 <span className="text-foreground break-all">info@pynkstudio.it</span>
+              </a>
+              <a
+                href="https://www.instagram.com/mpernozzoli"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 rounded-xl border border-border/30 bg-background/50 px-4 py-3 text-sm font-light transition-colors hover:border-primary/40 hover:bg-primary/5"
+              >
+                <Instagram className="w-4 h-4 text-primary shrink-0" />
+                <span className="text-foreground">@mpernozzoli</span>
+              </a>
+              <a
+                href="https://www.instagram.com/pynkstudios"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 rounded-xl border border-border/30 bg-background/50 px-4 py-3 text-sm font-light transition-colors hover:border-primary/40 hover:bg-primary/5"
+              >
+                <Instagram className="w-4 h-4 text-primary shrink-0" />
+                <span className="text-foreground">@pynkstudios</span>
               </a>
             </div>
 

@@ -23,8 +23,15 @@ const Footer = () => {
             <a href="https://www.linkedin.com/company/pynkstudio" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="hover:text-primary transition-colors">
               <Linkedin className="w-3.5 h-3.5" />
             </a>
-            <a href="https://www.instagram.com/pynkstudios" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:text-primary transition-colors">
+            <a
+              href="https://www.instagram.com/pynkstudios"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram @pynkstudios"
+              className="inline-flex items-center gap-1.5 hover:text-primary transition-colors"
+            >
               <Instagram className="w-3.5 h-3.5" />
+              <span>@pynkstudios</span>
             </a>
           </div>
         </div>

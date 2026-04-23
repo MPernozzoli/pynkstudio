@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 Disallow: /ad/
 
-Sitemap: https://pynkstudio.lovable.app/sitemap.xml
+Sitemap: https://pynkstudio.it/sitemap.xml
 
 # Specific AI crawlers
 User-agent: GPTBot
