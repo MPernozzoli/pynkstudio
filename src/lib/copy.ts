@@ -8,7 +8,7 @@ export function t(d: Dual, nerd: boolean): string {
 
 export const homeHero = {
   title: {
-    plain: "Costruiamo software che regge il mondo reale.",
+    plain: "Costruiamo software che reggono il mondo reale.",
     nerd: "Engineering-first · TypeScript · da idea a produzione.",
   },
   subtitle: {
