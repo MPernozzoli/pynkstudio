@@ -1,6 +1,8 @@
 # AI and Search Engine Crawlers
 User-agent: *
 Allow: /
+Disallow: /ad/
+
 Sitemap: https://pynkstudio.lovable.app/sitemap.xml
 
 # Specific AI crawlers

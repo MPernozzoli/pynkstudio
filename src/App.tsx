@@ -15,6 +15,7 @@ import Contattaci from "./pages/Contattaci";
 import AltriProgetti from "./pages/AltriProgetti";
 import NotFound from "./pages/NotFound";
 import Unsubscribe from "./pages/Unsubscribe";
+import VisitCardAd from "./pages/VisitCardAd";
 import ScrollToTop from "./components/ScrollToTop";
 
 const queryClient = new QueryClient();
@@ -41,6 +42,7 @@ const App = () => (
                 <Route path="/contattaci" element={<Contattaci />} />
                 <Route path="/altri-progetti" element={<AltriProgetti />} />
                 <Route path="/unsubscribe" element={<Unsubscribe />} />
+                <Route path="/ad/mp" element={<VisitCardAd />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </NerdModeProvider>
