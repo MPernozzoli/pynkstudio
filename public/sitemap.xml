@@ -30,9 +30,4 @@
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
-  <url>
-    <loc>https://pynkstudio.it/altri-progetti</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.35</priority>
-  </url>
 </urlset>

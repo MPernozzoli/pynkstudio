@@ -12,7 +12,6 @@ import Settori from "./pages/Settori";
 import Consulenza from "./pages/Consulenza";
 import Lavori from "./pages/Lavori";
 import Contattaci from "./pages/Contattaci";
-import AltriProgetti from "./pages/AltriProgetti";
 import NotFound from "./pages/NotFound";
 import Unsubscribe from "./pages/Unsubscribe";
 import VisitCardAd from "./pages/VisitCardAd";
@@ -40,7 +39,6 @@ const App = () => (
                 <Route path="/per-le-aziende" element={<Navigate to="/consulenza" replace />} />
                 <Route path="/metodo" element={<Navigate to="/consulenza" replace />} />
                 <Route path="/contattaci" element={<Contattaci />} />
-                <Route path="/altri-progetti" element={<AltriProgetti />} />
                 <Route path="/unsubscribe" element={<Unsubscribe />} />
                 <Route path="/ad/mp" element={<VisitCardAd />} />
                 <Route path="*" element={<NotFound />} />
