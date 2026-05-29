@@ -17,7 +17,7 @@ function damp(current: number, target: number, lambda: number, delta: number) {
 function OrganicMesh() {
   const groupRef = useRef<THREE.Group>(null);
   const wireGroupRef = useRef<THREE.Group>(null);
-  const distortMatRef = useRef<{ distort: number } | null>(null);
+  const distortMatRef = useRef<any>(null);
   const [color, setColor] = useState(() => hslPrimaryColor());
   /** Obiettivo puntatore normalizzato (-1…1), Y verso l’alto sullo schermo. */
   const pointerTarget = useRef({ x: 0, y: 0 });
